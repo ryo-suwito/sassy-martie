@@ -1,27 +1,110 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #F0F2F8;
-  --color-brand-100: #E4E8F4;
-  --color-brand-200: #CDD4E8;
-  --color-brand-300: #CBD2FB;
-  --color-brand-400: #8894AA;
-  --color-brand-500: #4A5468;
-  --color-brand-600: #141824;
+  --color-brand-red: #C0392B;
+  --color-brand-red-deep: #922B21;
+  --color-brand-charcoal: #2C2C2C;
+  --color-brand-cream: #FAF7F2;
+  --color-brand-white: #FFFFFF;
+  --color-brand-coral: #E8776F;
+  --color-brand-peach: #F5E6D3;
+  --color-brand-grey: #6B6B6B;
 
-  --color-accent-blue: #3D52F0;
-  --color-accent-yellow-light: #FBE9A4;
-  --color-accent-yellow: #F0B520;
-  --color-accent-green: #2A9060;
+  --color-background: var(--color-brand-cream);
+  --color-foreground: var(--color-brand-charcoal);
 
-  --color-background: #F0F2F8;
-  --color-foreground: #141824;
+  --font-display: var(--font-caveat), cursive;
+  --font-heading: Georgia, serif;
+  --font-body: Georgia, serif;
+  --font-ui: Arial, sans-serif;
 }
 
 @layer base {
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-brand-charcoal);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: bold;
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-family: var(--font-ui);
+    font-weight: bold;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center font-ui font-bold rounded cursor-pointer transition-colors px-4 py-2 text-sm;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-primary {
+    @apply bg-brand-red text-brand-white hover:bg-brand-red-deep;
+  }
+  .btn-secondary {
+    @apply border-2 border-brand-charcoal text-brand-charcoal hover:bg-brand-charcoal hover:text-brand-white bg-transparent;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-brand-charcoal hover:bg-brand-charcoal/10;
+  }
+  .btn-coral {
+    @apply bg-brand-coral text-brand-white hover:bg-brand-red;
+  }
+  .btn-disabled {
+    @apply opacity-50 cursor-not-allowed pointer-events-none;
+  }
+
+  /* Tags */
+  .tag {
+    @apply inline-flex items-center font-ui font-bold text-xs uppercase tracking-wider px-2 py-1 rounded;
+  }
+  .tag-red {
+    @apply bg-brand-red text-brand-white;
+  }
+  .tag-coral {
+    @apply bg-brand-coral text-brand-white;
+  }
+  .tag-peach {
+    @apply bg-brand-peach text-brand-charcoal;
+  }
+  .tag-charcoal {
+    @apply bg-brand-charcoal text-brand-white;
+  }
+  .tag-grey {
+    @apply bg-brand-grey text-brand-white;
+  }
+  .tag-outline {
+    @apply border border-brand-charcoal text-brand-charcoal bg-transparent;
+  }
+
+  /* Form Elements */
+  .form-label {
+    @apply block font-ui font-bold text-sm text-brand-charcoal mb-1;
+  }
+  .form-input {
+    @apply w-full border-2 border-brand-grey/30 rounded px-3 py-2 font-ui text-base text-brand-charcoal bg-brand-white placeholder-brand-grey/60 focus:border-brand-charcoal focus:outline-none transition-colors;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-brand-white border border-brand-grey/20 p-6 rounded shadow-sm;
+  }
+  .card-peach {
+    @apply bg-brand-peach border-none;
   }
 }
