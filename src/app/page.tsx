@@ -1,27 +1,11 @@
-import { Search, ShoppingBag, Terminal, Sparkles, Database } from "lucide-react";
+import { Search, Terminal, Sparkles, Database } from "lucide-react";
 import Link from "next/link";
+import Navbar from "@/components/ui/Navbar";
 
 export default function Home() {
   return (
     <div className="flex-1">
-      {/* Navigation */}
-      <nav className="border-b border-brand-grey/20 bg-brand-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-display text-4xl text-brand-red leading-none group-hover:text-brand-red-deep transition-colors">
-              SassyMartie
-            </span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link href="/login" className="btn btn-ghost">
-              Sign in
-            </Link>
-            <Link href="/list-tool" className="btn btn-primary">
-              List your tool
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <main className="max-w-6xl mx-auto px-4 py-20 md:py-28">
@@ -66,7 +50,7 @@ export default function Home() {
             </div>
             <h3 className="mb-2">Own Your Portfolio</h3>
             <p className="text-brand-charcoal/80 text-sm">
-              Don't let your forgotten side-projects die. SassyMartie acts as the cross-promotion profile page for all the tools you've built.
+              Don&apos;t let your forgotten side-projects die. SassyMartie acts as the cross-promotion profile page for all the tools you&apos;ve built.
             </p>
           </div>
 
@@ -76,7 +60,7 @@ export default function Home() {
             </div>
             <h3 className="mb-2">Find the Diamonds</h3>
             <p className="text-brand-charcoal/80 text-sm">
-              We are a curated-ish dumping ground. Sometimes you find a Rolex between the broken toasters. That's the thrill of the hunt.
+              We are a curated-ish dumping ground. Sometimes you find a Rolex between the broken toasters. That&apos;s the thrill of the hunt.
             </p>
           </div>
         </div>
@@ -113,7 +97,7 @@ export default function Home() {
         <div className="card-peach p-8 md:p-12 text-center rounded">
           <h2 className="text-3xl md:text-4xl mb-4 text-brand-red font-heading">Ready to start digging?</h2>
           <p className="text-brand-charcoal/80 mb-8 max-w-2xl mx-auto text-lg">
-            Too many ideas, not enough time. We know. Whether you're a founder with 5 half-alive projects or looking for a tool that just works—you're in the right place.
+            Too many ideas, not enough time. We know. Whether you&apos;re a founder with 5 half-alive projects or looking for a tool that just works—you&apos;re in the right place.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
              <Link href="/explore" className="btn btn-secondary btn-lg bg-brand-white">
