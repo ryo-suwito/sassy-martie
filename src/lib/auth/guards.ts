@@ -60,6 +60,7 @@ export async function requireTaster(supabase: SupabaseClient): Promise<UserClaim
   const claims = await requireAuth(supabase)
   
   const { data: taster, error } = await supabase
+    .schema('community')
     .from('tasters')
     .select('status')
     .eq('id', claims.sub)
