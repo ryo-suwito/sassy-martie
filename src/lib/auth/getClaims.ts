@@ -13,7 +13,7 @@ export interface UserClaims {
     [key: string]: unknown
   }
   // Custom claims for SassyMartie
-  user_role?: 'user' | 'lister' | 'backoffice'
+  user_role?: 'user' | 'lister' | 'backoffice' | 'backoffice_admin' | 'backoffice_reviewer'
   is_backoffice?: boolean
 }
 

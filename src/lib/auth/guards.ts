@@ -37,6 +37,23 @@ export async function requireRole(
 }
 
 /**
+ * Ensures the user has one of the specified role claims.
+ * Throws a 403 error if the role is insufficient.
+ */
+export async function requireAnyRole(
+  supabase: SupabaseClient,
+  roles: UserClaims['user_role'][]
+): Promise<UserClaims> {
+  const claims = await requireAuth(supabase)
+  
+  if (!claims.user_role || !roles.includes(claims.user_role)) {
+    throw new Error('403: Forbidden - Insufficient Permissions')
+  }
+  
+  return claims
+}
+
+/**
  * Ensures the user is an active taster.
  */
 export async function requireTaster(supabase: SupabaseClient): Promise<UserClaims> {
