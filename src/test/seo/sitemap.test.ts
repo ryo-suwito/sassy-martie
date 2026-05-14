@@ -13,28 +13,28 @@ describe('Sitemap', () => {
     const mockListers = [{ username: 'martie' }]
 
     const supabase = await createClient()
-    supabase.from.mockImplementation((table: string) => {
+    vi.mocked(supabase.from).mockImplementation((table: string) => {
       if (table === 'listings') {
         return {
           select: vi.fn().mockReturnThis(),
           eq: vi.fn().mockReturnThis(),
-          then: (cb: any) => cb({ data: mockListings, error: null })
-        }
+          then: (cb: (val: unknown) => void) => cb({ data: mockListings, error: null })
+        } as unknown as ReturnType<typeof supabase.from>
       }
       if (table === 'editorials') {
         return {
           select: vi.fn().mockReturnThis(),
           eq: vi.fn().mockReturnThis(),
-          then: (cb: any) => cb({ data: mockEditorials, error: null })
-        }
+          then: (cb: (val: unknown) => void) => cb({ data: mockEditorials, error: null })
+        } as unknown as ReturnType<typeof supabase.from>
       }
       if (table === 'lister_profiles') {
         return {
           select: vi.fn().mockReturnThis(),
-          then: (cb: any) => cb({ data: mockListers, error: null })
-        }
+          then: (cb: (val: unknown) => void) => cb({ data: mockListers, error: null })
+        } as unknown as ReturnType<typeof supabase.from>
       }
-      return {}
+      return {} as unknown as ReturnType<typeof supabase.from>
     })
 
     const result = await sitemap()

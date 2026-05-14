@@ -3,11 +3,8 @@ import { getListings, getListingBySlug, getListerProfile } from '@/lib/catalog'
 import { createClient } from '@/utils/supabase/server'
 
 describe('Catalog Library', () => {
-  let supabase: any;
-
   beforeEach(async () => {
     vi.clearAllMocks()
-    supabase = await createClient()
   })
 
   it('getListings fetches live listings with correct structure', async () => {
@@ -17,18 +14,19 @@ describe('Catalog Library', () => {
         slug: 'test-tool',
         name: 'Test Tool',
         tagline: 'A great tool',
-        pricing_model: 'free',
+        pricing_model: 'free' as const,
         lister: { username: 'martie' },
-        trust: { qa_status: 'passing', active_badges: ['SECURE'], active_grace_deadline: null }
+        trust: { qa_status: 'passing' as const, active_badges: ['SECURE'], active_grace_deadline: null }
       }
     ]
 
+    const supabase = await createClient()
     const queryMock = {
       select: vi.fn().mockReturnThis(),
       eq: vi.fn().mockReturnThis(),
       order: vi.fn().mockResolvedValue({ data: mockData, error: null }),
     }
-    supabase.from.mockReturnValue(queryMock)
+    vi.mocked(supabase.from).mockReturnValue(queryMock as unknown as ReturnType<typeof supabase.from>);
 
     const listings = await getListings()
     
@@ -38,12 +36,13 @@ describe('Catalog Library', () => {
   })
 
   it('getListingBySlug returns null when listing not found', async () => {
+    const supabase = await createClient()
     const queryMock = {
       select: vi.fn().mockReturnThis(),
       eq: vi.fn().mockReturnThis(),
       single: vi.fn().mockResolvedValue({ data: null, error: new Error('Not found') }),
     }
-    supabase.from.mockReturnValue(queryMock)
+    vi.mocked(supabase.from).mockReturnValue(queryMock as unknown as ReturnType<typeof supabase.from>);
 
     const listing = await getListingBySlug('non-existent')
     expect(listing).toBeNull()
@@ -51,26 +50,27 @@ describe('Catalog Library', () => {
 
   it('getListerProfile fetches profile and tool count', async () => {
     const mockProfile = { id: 'u1', username: 'martie', display_name: 'Martie Opossum' }
+    const supabase = await createClient()
     
-    supabase.from.mockImplementation((table: string) => {
+    vi.mocked(supabase.from).mockImplementation((table: string) => {
       if (table === 'lister_profiles') {
         return {
           select: vi.fn().mockReturnThis(),
           eq: vi.fn().mockReturnThis(),
           single: vi.fn().mockResolvedValue({ data: mockProfile, error: null })
-        }
+        } as unknown as ReturnType<typeof supabase.from>;
       }
       if (table === 'listings') {
         return {
           select: vi.fn().mockReturnThis(),
           eq: vi.fn().mockReturnThis(),
-          then: (cb: any) => cb({ count: 5, error: null })
-        }
+          then: (cb: (val: unknown) => void) => cb({ count: 5, error: null })
+        } as unknown as ReturnType<typeof supabase.from>;
       }
       return {
         select: vi.fn().mockReturnThis(),
         eq: vi.fn().mockReturnThis(),
-      }
+      } as unknown as ReturnType<typeof supabase.from>;
     })
 
     const profile = await getListerProfile('martie')
