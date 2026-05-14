@@ -1,4 +1,5 @@
-import { QAStatus } from './catalog'
+import { QAStatus, PricingModel } from './catalog'
+export type { QAStatus, PricingModel }
 
 export interface ListingTrustSummary {
   listing_id: string
@@ -12,10 +13,23 @@ export interface ListingCard {
   slug: string
   name: string
   tagline: string
-  pricing_model: string
+  pricing_model: PricingModel
   qa_status: QAStatus
   active_badges: string[]
-  lister_display_name: string | null
+  active_grace_deadline: string | null
+  lister_display_name?: string | null
+  lister_username?: string
+}
+
+export interface ListerProfileModel {
+  id: string
+  username: string
+  display_name: string | null
+  bio: string | null
+  website_url: string | null
+  twitter_handle: string | null
+  avatar_url: string | null
+  tool_count: number
 }
 
 export interface BuilderPortfolioItem {
