@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { updateSession } from '@/utils/supabase/middleware'
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient } from '@supabase/ssr'
+import { SupabaseClient } from '@supabase/supabase-js'
 
 vi.mock('@supabase/ssr', () => ({
   createServerClient: vi.fn(),
@@ -48,7 +49,7 @@ describe('Middleware updateSession', () => {
         getUser: vi.fn().mockResolvedValue({ data: { user: null }, error: null }),
       },
     }
-    vi.mocked(createServerClient).mockReturnValue(mockSupabase as any)
+    vi.mocked(createServerClient).mockReturnValue(mockSupabase as unknown as SupabaseClient)
 
     const response = await updateSession(request)
     expect(response).toBeDefined()
@@ -62,7 +63,7 @@ describe('Middleware updateSession', () => {
         getUser: vi.fn().mockResolvedValue({ data: { user: null }, error: null }),
       },
     }
-    vi.mocked(createServerClient).mockReturnValue(mockSupabase as any)
+    vi.mocked(createServerClient).mockReturnValue(mockSupabase as unknown as SupabaseClient)
 
     const response = await updateSession(request)
     expect(NextResponse.redirect).toHaveBeenCalledWith(expect.objectContaining({
@@ -83,7 +84,7 @@ describe('Middleware updateSession', () => {
       eq: vi.fn().mockReturnThis(),
       single: vi.fn().mockResolvedValue({ data: { username: null }, error: null }),
     }
-    vi.mocked(createServerClient).mockReturnValue(mockSupabase as any)
+    vi.mocked(createServerClient).mockReturnValue(mockSupabase as unknown as SupabaseClient)
 
     const response = await updateSession(request)
     expect(NextResponse.redirect).toHaveBeenCalledWith(expect.objectContaining({
@@ -104,7 +105,7 @@ describe('Middleware updateSession', () => {
       eq: vi.fn().mockReturnThis(),
       single: vi.fn().mockResolvedValue({ data: { username: 'martie' }, error: null }),
     }
-    vi.mocked(createServerClient).mockReturnValue(mockSupabase as any)
+    vi.mocked(createServerClient).mockReturnValue(mockSupabase as unknown as SupabaseClient)
 
     const response = await updateSession(request)
     expect(NextResponse.redirect).not.toHaveBeenCalled()
@@ -118,7 +119,7 @@ describe('Middleware updateSession', () => {
         getUser: vi.fn().mockResolvedValue({ data: { user: null }, error: null }),
       },
     }
-    vi.mocked(createServerClient).mockReturnValue(mockSupabase as any)
+    vi.mocked(createServerClient).mockReturnValue(mockSupabase as unknown as SupabaseClient)
 
     const response = await updateSession(request)
     expect(NextResponse.redirect).toHaveBeenCalledWith(expect.objectContaining({
@@ -135,7 +136,7 @@ describe('Middleware updateSession', () => {
         getUser: vi.fn().mockResolvedValue({ data: { user: mockUser }, error: null }),
       },
     }
-    vi.mocked(createServerClient).mockReturnValue(mockSupabase as any)
+    vi.mocked(createServerClient).mockReturnValue(mockSupabase as unknown as SupabaseClient)
 
     const response = await updateSession(request)
     
