@@ -55,7 +55,7 @@ case $GATE in
         npm run lint || { echo "❌ Lint failed"; exit 1; }
         
         echo "  ✓ Checking middleware..."
-        test -f middleware.ts || { echo "❌ middleware.ts missing"; exit 1; }
+        test -f src/middleware.ts || { echo "❌ middleware.ts missing"; exit 1; }
         
         echo "✅ Gate 1 passed"
         ;;

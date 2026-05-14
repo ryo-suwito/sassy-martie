@@ -15,7 +15,7 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll()
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
           supabaseResponse = NextResponse.next({
             request,
           })
@@ -35,18 +35,61 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // IMPORTANT: You *must* return the supabaseResponse object as it is. If you're
-  // creating a new response object with NextResponse.next() make sure to:
-  // 1. Pass the request in it, like so:
-  //    const myNewResponse = NextResponse.next({ request })
-  // 2. Copy over the cookies, like so:
-  //    myNewResponse.cookies.setAll(supabaseResponse.cookies.getAll())
-  // 3. Change the myNewResponse object to fit your needs, but avoid changing
-  //    the cookies!
-  // 4. Finally:
-  //    return myNewResponse
-  // If this is not done, you may be causing the browser and server to go out
-  // of sync and terminate the user's session prematurely!
+  const url = request.nextUrl.clone()
+
+  // 2. Protect /dashboard routes
+  if (url.pathname.startsWith('/dashboard')) {
+    if (!user) {
+      url.pathname = '/auth/login'
+      url.searchParams.set('next', request.nextUrl.pathname)
+      const response = NextResponse.redirect(url)
+      supabaseResponse.cookies.getAll().forEach((cookie) => {
+        response.cookies.set(cookie.name, cookie.value, cookie)
+      })
+      return response
+    }
+
+    // Onboarding check: IF valid session BUT onboarding incomplete → redirect to /dashboard/onboarding
+    if (url.pathname !== '/dashboard/onboarding') {
+      const { data: profile } = await supabase
+        .from('lister_profiles')
+        .select('username')
+        .eq('id', user.id)
+        .single()
+
+      if (!profile || profile.username === null) {
+        url.pathname = '/dashboard/onboarding'
+        const response = NextResponse.redirect(url)
+        supabaseResponse.cookies.getAll().forEach((cookie) => {
+          response.cookies.set(cookie.name, cookie.value, cookie)
+        })
+        return response
+      }
+    }
+  }
+
+  // 3. Protect /backoffice routes
+  if (url.pathname.startsWith('/backoffice')) {
+    if (!user) {
+      url.pathname = '/auth/login'
+      const response = NextResponse.redirect(url)
+      supabaseResponse.cookies.getAll().forEach((cookie) => {
+        response.cookies.set(cookie.name, cookie.value, cookie)
+      })
+      return response
+    }
+
+    const role = user.app_metadata?.role || user.role
+    const isBackoffice = ['backoffice_admin', 'backoffice_reviewer', 'backoffice'].includes(role)
+
+    if (!isBackoffice) {
+      const response = new NextResponse('403 Forbidden', { status: 403 })
+      supabaseResponse.cookies.getAll().forEach((cookie) => {
+        response.cookies.set(cookie.name, cookie.value, cookie)
+      })
+      return response
+    }
+  }
 
   return supabaseResponse
 }
