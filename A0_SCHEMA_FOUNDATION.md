@@ -18,21 +18,24 @@ Write the entire database. When you're done, `npx supabase gen types` runs clean
 ## Deliverables Checklist
 
 ### Migrations (`supabase/migrations/`)
-- [x] `001_schemas.sql` — CREATE SCHEMA for `catalog`, `trust`, `builder`, `backoffice`, `rewards`
-- [x] `002_enums.sql` — all enum types (pricing_model, listing status, qa_status, check_type, etc.)
-- [x] `003_catalog_tables.sql` — listings, utilities, editorials
-- [x] `004_trust_tables.sql` — qa_runs, qa_checks, badges, badge_grants, grace_periods
-- [x] `005_builder_tables.sql` — lister_profiles
-- [x] `006_backoffice_tables.sql` — flags, audit_log
-- [x] `007_rewards_tables.sql` — reward_items, vouchers, redemptions, earn_policies, external_code_pool
-- [x] `008_community_tables.sql` — taster_applications, tasters, taste_votes, taste_verdicts
-- [x] `009_system_config.sql` — system_config table + all seed rows
-- [x] `010_indexes.sql` — every RLS-filtered column indexed
-- [x] `011_rls_policies.sql` — RLS enabled + forced on all tables. All policies defined.
-- [x] `012_triggers.sql` — updated_at, badge grant/revoke, reputation update, taster auto-create
-- [x] `013_views.sql` — listing_trust_summary, taster_wallet, backoffice_work_queue
-- [x] `014_functions.sql` — redeem_voucher(), compute_taste_verdict(), award_badge_if_eligible(), check_and_compute_taste_verdict()
-- [x] `015_seed_config.sql` — system_config seed data
+- [x] `20240514000001_schemas.sql` — CREATE SCHEMA for `catalog`, `trust`, `builder`, `backoffice`, `rewards`
+- [x] `20240514000002_enums.sql` — all enum types (pricing_model, listing status, qa_status, check_type, etc.)
+- [x] `20240514000003_catalog_tables.sql` — listings, utilities, editorials
+- [x] `20240514000004_trust_tables.sql` — qa_runs, qa_checks, badges, badge_grants, grace_periods
+- [x] `20240514000005_builder_tables.sql` — lister_profiles
+- [x] `20240514000006_backoffice_tables.sql` — flags, audit_log
+- [x] `20240514000007_rewards_tables.sql` — reward_items, vouchers, redemptions, earn_policies, external_code_pool
+- [x] `20240514000008_community_tables.sql` — taster_applications, tasters, taste_votes, taste_verdicts
+- [x] `20240514000009_system_config.sql` — system_config table + all seed rows
+- [x] `20240514000010_indexes.sql` — every RLS-filtered column indexed
+- [x] `20240514000011_rls_policies.sql` — RLS enabled + forced on all tables. All policies defined.
+- [x] `20240514000012_triggers.sql` — updated_at, badge grant/revoke, reputation update, taster auto-create
+- [x] `20240514000013_views.sql` — listing_trust_summary, taster_wallet, backoffice_work_queue
+- [x] `20240514000014_functions.sql` — redeem_voucher(), compute_taste_verdict(), award_badge_if_eligible(), check_and_compute_taste_verdict()
+- [x] `20240514000015_seed_config.sql` — system_config seed data
+- [x] `20240514000016_a3_builder_extensions.sql` — Extensions for builder context
+- [x] `20240514000017_update_work_queue_view.sql` — Backoffice work queue refinements
+- [x] `20240514000018_qa_state_machine.sql` — State machine transitions and cron schedules
 
 ### Application Utilities (`src/utils/supabase/`)
 - [x] `browser.ts` — createBrowserClient
