@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SassyMartie — Copy, Content & Language Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red: #C0392B;
+    --red-deep: #922B21;
+    --coral: #E8776F;
+    --charcoal: #2C2C2C;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --peach: #F5E6D3;
+    --grey: #6B6B6B;
+    --border: rgba(44,44,44,0.12);
+    --border-med: rgba(44,44,44,0.22);
+    --sidebar-w: 240px;
+    --green: #5a8a4e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  nav.sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.25rem;
+    border-right: 1px solid var(--border);
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .sidebar-logo {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-logo .sassy {
+    font-family: 'Caveat', cursive;
+    color: var(--red);
+    font-size: 1.6rem;
+    line-height: 1;
+    display: block;
+  }
+  .sidebar-logo .martie {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+  }
+  .sidebar-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin: 1rem 0 0.25rem;
+  }
+  nav.sidebar a {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: var(--grey);
+    text-decoration: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+  }
+  nav.sidebar a:hover {
+    background: rgba(192,57,43,0.08);
+    color: var(--red);
+  }
+  nav.sidebar a.active {
+    color: var(--red);
+    font-weight: bold;
+  }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    padding: 3rem 4rem;
+    max-width: 900px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    margin-bottom: 5rem;
+  }
+
+  .section-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+  }
+  .section-desc {
+    color: var(--grey);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    max-width: 640px;
+    line-height: 1.65;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 2rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 0.75rem;
+  }
+  .hero-title {
+    font-family: Georgia, serif;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .hero-title span { 
+    color: var(--red); 
+    font-family: 'Caveat', cursive; 
+    font-weight: 600; 
+  }
+  .hero-sub {
+    color: var(--grey);
+    font-size: 1rem;
+    max-width: 620px;
+    line-height: 1.7;
+  }
+  .hero-tag {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--peach);
+    color: var(--red-deep);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  /* ── VOICE PRINCIPLE ── */
+  .voice-principle {
+    background: var(--white);
+    border-left: 4px solid var(--red);
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .voice-principle-title {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+  .voice-principle-desc {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  /* ── COMPARISON BOX ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .compare-box {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 2px solid var(--border);
+  }
+  .compare-box.good {
+    border-color: var(--green);
+    background: rgba(90,138,78,0.03);
+  }
+  .compare-box.bad {
+    border-color: var(--red);
+    background: rgba(192,57,43,0.03);
+  }
+  .compare-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .compare-box.good .compare-label {
+    color: var(--green);
+  }
+  .compare-box.bad .compare-label {
+    color: var(--red);
+  }
+  .compare-icon {
+    font-size: 1rem;
+  }
+  .compare-content {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--charcoal);
+  }
+  .compare-reason {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--grey);
+    font-style: italic;
+  }
+
+  /* ── COPY PATTERN ── */
+  .pattern-row {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .pattern-context {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+  .pattern-example {
+    font-size: 1rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .pattern-note {
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    color: var(--grey);
+    font-style: italic;
+  }
+
+  /* ── WORD BANK ── */
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .word-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.6rem 0.85rem;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+  }
+  .word-section-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .word-section-label:first-child {
+    margin-top: 0;
+  }
+  .word-item.use-freely {
+    border-color: var(--green);
+    background: rgba(90,138,78,0.04);
+  }
+  .word-item.use-sparingly {
+    border-color: var(--coral);
+    background: rgba(232,119,111,0.06);
+  }
+  .word-item.never-use {
+    border-color: var(--red);
+    background: rgba(192,57,43,0.04);
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  /* ── TONE CONTEXT TABLE ── */
+  .tone-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 2rem;
+  }
+  .tone-table thead {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .tone-table th {
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border: none;
+  }
+  .tone-table th:first-child {
+    border-top-left-radius: 6px;
+  }
+  .tone-table th:last-child {
+    border-top-right-radius: 6px;
+  }
+  .tone-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    vertical-align: top;
+  }
+  .tone-table tbody tr {
+    background: var(--white);
+  }
+  .tone-table tbody tr:hover {
+    background: rgba(192,57,43,0.02);
+  }
+  .tone-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .tone-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+  }
+  .tone-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
+  }
+  .tone-context-label {
+    font-weight: bold;
+    color: var(--charcoal);
+  }
+  .tone-description {
+    color: var(--grey);
+    font-size: 0.8rem;
+  }
+  .tone-example {
+    color: var(--charcoal);
+    font-style: italic;
+    margin-top: 0.3rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--peach);
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: var(--peach);
+    border-left: 4px solid var(--red);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .callout-title {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--red-deep);
+    margin-bottom: 0.5rem;
+  }
+  .callout-content {
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--charcoal);
+  }
+
+  /* ── ARTICLE SECTION ── */
+  .article-example {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .article-example h3 {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .article-example p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+  .article-example p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist-item:last-child {
+    border-bottom: none;
+  }
+  .checklist-icon {
+    font-size: 1.1rem;
+    color: var(--green);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .checklist-text {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--charcoal);
+  }
+
+  /* ── EMAIL EXAMPLE ── */
+  .email-preview {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .email-header {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 0.75rem 1.25rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+  }
+  .email-subject {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  .email-from {
+    opacity: 0.7;
+  }
+  .email-body {
+    padding: 1.75rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .email-body p {
+    margin-bottom: 1rem;
+  }
+  .email-body p:last-child {
+    margin-bottom: 0;
+  }
+  .email-signature {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--grey);
+    font-size: 0.9rem;
+  }
+
+  /* ── SOCIAL POST ── */
+  .social-preview {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .social-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .social-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    color: var(--cream);
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .social-meta {
+    flex: 1;
+  }
+  .social-name {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--charcoal);
+  }
+  .social-handle {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    color: var(--grey);
+  }
+  .social-content {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+  }
+  .social-platform {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grey);
+    margin-top: 0.5rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 968px) {
+    body {
+      flex-direction: column;
+    }
+    nav.sidebar {
+      width: 100%;
+      height: auto;
+      position: static;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    main {
+      padding: 2rem 1.5rem;
+    }
+    .compare-grid {
+      grid-template-columns: 1fr;
+    }
+    .tone-table {
+      font-size: 0.8rem;
+    }
+    .tone-table th,
+    .tone-table td {
+      padding: 0.6rem 0.75rem;
+    }
+  }
+
+  /* ── UTILITIES ── */
+  .heart {
+    color: var(--red);
+  }
+  .mt-2 { margin-top: 2rem; }
+  .mb-1 { margin-bottom: 1rem; }
+  .mb-2 { margin-bottom: 2rem; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════════════════ -->
+<!-- SIDEBAR NAVIGATION -->
+<!-- ══════════════════════════════════════════════════════════════════════════════ -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <span class="sassy">Sassy</span>
+    <span class="martie">Martie</span>
+  </div>
+
+  <div class="sidebar-label">Foundations</div>
+  <a href="#voice-tone">Voice & Tone</a>
+  <a href="#martie-test">The Martie Test</a>
+  <a href="#voice-pillars">Voice Pillars</a>
+
+  <div class="sidebar-label">Copy Patterns</div>
+  <a href="#buttons-ctas">Buttons & CTAs</a>
+  <a href="#placeholders">Placeholder Text</a>
+  <a href="#state-messages">State Messages</a>
+  <a href="#onboarding">Onboarding Copy</a>
+
+  <div class="sidebar-label">Content Types</div>
+  <a href="#marketing-copy">Marketing Copy</a>
+  <a href="#articles">Articles & Blog Posts</a>
+  <a href="#email-templates">Email Templates</a>
+  <a href="#social-media">Social Media</a>
+
+  <div class="sidebar-label">Context & Tone</div>
+  <a href="#tone-by-context">Tone by Context</a>
+  <a href="#word-bank">Word Bank</a>
+
+  <div class="sidebar-label">Examples</div>
+  <a href="#good-vs-bad">Good vs Bad Examples</a>
+  <a href="#real-scenarios">Real Scenarios</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════════════════ -->
+<!-- MAIN CONTENT -->
+<!-- ══════════════════════════════════════════════════════════════════════════════ -->
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">BRAND LANGUAGE GUIDE — VERSION 1.0</div>
+    <h1 class="hero-title">Copy, Content <span>&</span> Language</h1>
+    <p class="hero-sub">
+      A comprehensive guide to writing like SassyMartie — warm, direct, honest, and occasionally funny. 
+      For anyone writing copy, creating content, or building human-facing interactions in the SassyMartie universe.
+    </p>
+    <span class="hero-tag">Built with heart, chaos, and caffeine ♡</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 01. VOICE & TONE -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="voice-tone">
+    <div class="section-label">SECTION 01</div>
+    <h2 class="section-title">Voice & Tone</h2>
+    <p class="section-desc">
+      Voice is who we are. Tone is how we adjust to different situations. The SassyMartie voice is consistent — 
+      warm, direct, and human. The tone shifts slightly depending on context, but never loses that core personality.
+    </p>
+    <div class="divider"></div>
+
+    <div class="callout">
+      <div class="callout-title">The One-Sentence Brief</div>
+      <div class="callout-content">
+        Talk like the friendly senior who remembers what it felt like to be new — warm, direct, no fluff, 
+        occasionally funny but never trying hard.
+      </div>
+    </div>
+
+    <div class="voice-principle">
+      <div class="voice-principle-title">Core Voice Attributes</div>
+      <div class="voice-principle-desc">
+        <strong>Warm but not gushing.</strong> Like a friend who's happy you showed up — but won't make it weird. 
+        The welcome is genuine, not performed.<br><br>
+        <strong>Direct but not cold.</strong> Short sentences. Say the thing. Don't bury the point inside passive constructions 
+        or three-clause qualifiers.<br><br>
+        <strong>Honest, not hype.</strong> Don't oversell. Trust that the right people will get it. 
+        Hyperbole is the enemy of credibility.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 02. THE MARTIE TEST -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="martie-test">
+    <div class="section-label">SECTION 02</div>
+    <h2 class="section-title">The Martie Test</h2>
+    <p class="section-desc">
+      Before publishing any copy, design, or decision, apply one question: 
+      <strong>Would Martie say this to a new friend at a hackathon?</strong>
+    </p>
+    <div class="divider"></div>
+
+    <div class="compare-grid">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          IF YES
+        </div>
+        <div class="compare-content">
+          Ship it. The copy feels natural, genuine, and helpful. It sounds like something a real person would say.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          SOUNDS LIKE A PRESS RELEASE
+        </div>
+        <div class="compare-content">
+          Rewrite it. Strip out the corporate language, the passive voice, and the buzzwords. Make it human.
+        </div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          Read the copy out loud. If it sounds weird when spoken, it's probably too formal or robotic.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          Remove any sentence that could appear in a corporate memo or government form.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          If you're using more than one exclamation mark, you're trying too hard. One, rarely. None, usually.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          Check for words from the "Never Use" list. Replace them with simpler, more human alternatives.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 03. VOICE PILLARS -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="voice-pillars">
+    <div class="section-label">SECTION 03</div>
+    <h2 class="section-title">Voice Pillars</h2>
+    <p class="section-desc">
+      These five principles guide every piece of copy, every interaction, every message. 
+      When in doubt, return to these pillars.
+    </p>
+    <div class="divider"></div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">1. WARM BUT NOT GUSHING</div>
+      <div class="pattern-example">
+        Like a friend who's happy you showed up — but won't make it weird. The welcome is genuine, not performed.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          DO
+        </div>
+        <div class="compare-content">
+          "Hey, glad you're here."<br>
+          "Your tool belongs here too."
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          DON'T
+        </div>
+        <div class="compare-content">
+          "Welcome to our AMAZING community of INCREDIBLE creators!!!"
+        </div>
+        <div class="compare-reason">
+          Too much enthusiasm feels fake and exhausting.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">2. DIRECT BUT NOT COLD</div>
+      <div class="pattern-example">
+        Short sentences. Say the thing. Don't bury the point inside passive constructions or three-clause qualifiers.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          DO
+        </div>
+        <div class="compare-content">
+          "List your tool. Tell people what it does. Done."
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          DON'T
+        </div>
+        <div class="compare-content">
+          "Our platform facilitates the seamless submission and discoverability of your software product."
+        </div>
+        <div class="compare-reason">
+          This sounds like enterprise software documentation, not a helpful friend.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">3. HONEST, NOT HYPE</div>
+      <div class="pattern-example">
+        Don't oversell. Trust that the right people will get it. Hyperbole is the enemy of credibility.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          DO
+        </div>
+        <div class="compare-content">
+          "We're small but growing. And we're building this with you."
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          DON'T
+        </div>
+        <div class="compare-content">
+          "The #1 AI SaaS directory trusted by thousands of world-class founders!"
+        </div>
+        <div class="compare-reason">
+          This is marketing hype. It erodes trust instead of building it.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">4. LIGHT HUMOR, NEVER PUNCHING DOWN</div>
+      <div class="pattern-example">
+        The joke is always about the shared experience — the chaos of building, the too-many-ideas situation, 
+        the cold coffee. Never at the user's expense.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          DO
+        </div>
+        <div class="compare-content">
+          "Too many ideas, not enough time. We know."<br>
+          "No pitch deck needed."
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          DON'T
+        </div>
+        <div class="compare-content">
+          Sarcasm that makes the user feel foolish or alienates newcomers.
+        </div>
+        <div class="compare-reason">
+          Humor should build connection, not create distance.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">5. ASSUMES COMPETENCE</div>
+      <div class="pattern-example">
+        Don't over-explain. The audience is smart. Trust them to know what a URL is.
+      </div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          DO
+        </div>
+        <div class="compare-content">
+          "Add your product in under 5 minutes."
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          DON'T
+        </div>
+        <div class="compare-content">
+          "First, you'll need to navigate to our submission portal where you can begin the process of..."
+        </div>
+        <div class="compare-reason">
+          This treats the user like they've never used a website before.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 04. BUTTONS & CTAS -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="buttons-ctas">
+    <div class="section-label">SECTION 04</div>
+    <h2 class="section-title">Buttons & CTAs</h2>
+    <p class="section-desc">
+      Primary actions are verb-first, short, and purposeful. Secondary actions are equally clear, just lower urgency. 
+      Never use corporate jargon or passive constructions in CTAs.
+    </p>
+    <div class="divider"></div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">PRIMARY CTAs</div>
+      <div class="pattern-example">
+        <strong>Use:</strong> "List your tool" · "Get discovered" · "Join" · "Ship it"
+      </div>
+      <div class="pattern-note">
+        Verb-first, action-oriented, clear benefit. No fluff.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          List your tool<br>
+          Get discovered<br>
+          Join the directory<br>
+          Start building
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Click here to submit<br>
+          Apply now<br>
+          Get started today!<br>
+          Submit your application
+        </div>
+        <div class="compare-reason">
+          These are either too generic, too formal, or trying too hard with exclamation marks.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SECONDARY CTAs</div>
+      <div class="pattern-example">
+        <strong>Use:</strong> "See how it works" · "Browse tools" · "Learn more"
+      </div>
+      <div class="pattern-note">
+        Still clear, just lower urgency than primary actions.
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">DESTRUCTIVE ACTIONS</div>
+      <div class="pattern-example">
+        <strong>Use:</strong> "Remove this" · "Delete" · "Cancel"
+      </div>
+      <div class="pattern-note">
+        Don't over-explain or add scary language. Keep it simple and direct.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          Delete this listing
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Permanently delete this item forever
+        </div>
+        <div class="compare-reason">
+          "Permanently" and "forever" are redundant and dramatic. Just say "Delete."
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">EMPTY STATE CTAs</div>
+      <div class="pattern-example">
+        <strong>Use:</strong> "Add your first tool" · "Create something" · "Start here"
+      </div>
+      <div class="pattern-note">
+        Inviting and low-pressure. No negative language.
+      </div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          Add your first tool
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          No items found. Please add items.
+        </div>
+        <div class="compare-reason">
+          "No items found" sounds like an error. Make it inviting instead.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 05. PLACEHOLDER TEXT -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="placeholders">
+    <div class="section-label">SECTION 05</div>
+    <h2 class="section-title">Placeholder Text</h2>
+    <p class="section-desc">
+      Give a real hint. Don't just repeat the field label. The placeholder should help the user understand 
+      what format or style of answer is expected.
+    </p>
+    <div class="divider"></div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">TOOL NAME</div>
+      <div class="pattern-example">
+        <strong>Field label:</strong> Tool Name<br>
+        <strong>Placeholder:</strong> "What do people call it?"
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          What do people call it?
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Name<br>
+          Enter name<br>
+          Tool name here
+        </div>
+        <div class="compare-reason">
+          These just repeat the label. Not helpful.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">DESCRIPTION</div>
+      <div class="pattern-example">
+        <strong>Field label:</strong> Description<br>
+        <strong>Placeholder:</strong> "What does it do? Keep it human."
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">URL</div>
+      <div class="pattern-example">
+        <strong>Field label:</strong> Website<br>
+        <strong>Placeholder:</strong> "Where do people find it?"
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          Where do people find it?
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          https://<br>
+          Enter URL
+        </div>
+        <div class="compare-reason">
+          Too technical and unhelpful.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">CATEGORY / DROPDOWN</div>
+      <div class="pattern-example">
+        <strong>Field label:</strong> Category<br>
+        <strong>Placeholder:</strong> "Pick the closest fit"
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">EMAIL</div>
+      <div class="pattern-example">
+        <strong>Field label:</strong> Your Email<br>
+        <strong>Placeholder:</strong> "We'll send you updates here"
+      </div>
+      <div class="pattern-note">
+        Explain why you need it, not just what format.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 06. STATE MESSAGES -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="state-messages">
+    <div class="section-label">SECTION 06</div>
+    <h2 class="section-title">State Messages</h2>
+    <p class="section-desc">
+      State messages are how you communicate system status to users — empty states, errors, success, loading. 
+      Keep them calm, honest, and human.
+    </p>
+    <div class="divider"></div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">EMPTY STATE</div>
+      <div class="pattern-example">
+        "Nothing here yet."
+      </div>
+      <div class="pattern-note">
+        Optional addition: "Could be your tool."
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          Nothing here yet. Could be yours though.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          No results found. Try adjusting your filters or search criteria.
+        </div>
+        <div class="compare-reason">
+          Too robotic and instructional.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">ERROR MESSAGE</div>
+      <div class="pattern-example">
+        "Something went wrong. Try again?"<br>
+        "That link doesn't seem right. Double-check it?"
+      </div>
+      <div class="pattern-note">
+        Honest, calm, helpful. No blame.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          Something went wrong on our end. Try again in a sec.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Error 500: Internal Server Error. The server encountered an unexpected condition.
+        </div>
+        <div class="compare-reason">
+          Technical jargon doesn't help the user fix anything.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SUCCESS MESSAGE</div>
+      <div class="pattern-example">
+        "You're listed. Go tell someone."<br>
+        "Saved. <span class="heart">♡</span>"<br>
+        "Done. Your tool is live."
+      </div>
+      <div class="pattern-note">
+        Genuine celebration without going overboard.
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          You're in. Go build.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Congratulations! Your submission has been successfully processed!!!
+        </div>
+        <div class="compare-reason">
+          Too much enthusiasm feels fake.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">LOADING STATE</div>
+      <div class="pattern-example">
+        "Finding the good stuff..."<br>
+        "One sec."<br>
+        "On it."
+      </div>
+      <div class="pattern-note">
+        Short and casual. No need to explain what's happening under the hood.
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">404 PAGE</div>
+      <div class="pattern-example">
+        "Hmm. That page doesn't exist. Maybe it moved. Maybe it never did."
+      </div>
+      <div class="pattern-note">
+        Slightly philosophical, but still helpful. Include a link back to home or search.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 07. ONBOARDING COPY -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="onboarding">
+    <div class="section-label">SECTION 07</div>
+    <h2 class="section-title">Onboarding Copy</h2>
+    <p class="section-desc">
+      Onboarding should feel like a checklist a friend wrote — not a form in a government portal. 
+      Keep step labels conversational and encouraging.
+    </p>
+    <div class="divider"></div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">STEP LABELS</div>
+      <div class="pattern-example">
+        Step 1: "Tell us about your tool"<br>
+        Step 2: "Add a link"<br>
+        Step 3: "You're done"
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          Tell us about your tool<br>
+          Add a link<br>
+          You're done
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Step 1: Product Information Entry<br>
+          Step 2: URL Submission<br>
+          Step 3: Complete
+        </div>
+        <div class="compare-reason">
+          This sounds like enterprise software, not a friendly directory.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">WELCOME MESSAGE</div>
+      <div class="pattern-example">
+        "Let's get your thing listed. It won't take long."
+      </div>
+      <div class="pattern-note">
+        Warm, direct, sets expectations without being formal.
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">COMPLETION MESSAGE</div>
+      <div class="pattern-example">
+        "You're in. Go build."
+      </div>
+      <div class="pattern-note">
+        Short celebration, then action. No confetti needed.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 08. MARKETING COPY -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="marketing-copy">
+    <div class="section-label">SECTION 08</div>
+    <h2 class="section-title">Marketing Copy</h2>
+    <p class="section-desc">
+      Marketing copy should be confident and punchy without sliding into hype. Focus on the benefit, 
+      not the features. Speak to the feeling, not just the function.
+    </p>
+    <div class="divider"></div>
+
+    <div class="article-example">
+      <h3>Homepage Hero Example</h3>
+      <p>
+        <strong>Get your AI tool discovered.</strong><br>
+        Built different. Listed here.
+      </p>
+      <p>
+        SassyMartie is the curated directory for indie founders building AI-powered SaaS. 
+        No corporate fluff. No pitch deck required. Just ship it and get seen.
+      </p>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          <strong>Built different. Listed here.</strong><br><br>
+          The directory for scrappy builders who ship real things for real people.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          <strong>The #1 AI SaaS Discovery Platform</strong><br><br>
+          Revolutionizing how world-class founders connect with enterprise buyers through our cutting-edge directory ecosystem.
+        </div>
+        <div class="compare-reason">
+          Buzzword soup. This sounds like every startup pitch deck.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mt-2">
+      <div class="callout-title">Key Principles for Marketing Copy</div>
+      <div class="callout-content">
+        <strong>Lead with the benefit, not the feature.</strong> "Get discovered" beats "Directory listing functionality."<br><br>
+        <strong>Use concrete language.</strong> "Built by indie hackers" beats "Community-driven platform."<br><br>
+        <strong>Don't claim #1 unless you can prove it.</strong> And even then, probably don't.<br><br>
+        <strong>One CTA per page.</strong> Don't scatter "Sign up" buttons everywhere.
+      </div>
+    </div>
+
+    <div class="pattern-row mt-2">
+      <div class="pattern-context">TAGLINES & SHORT COPY</div>
+      <div class="pattern-example">
+        "Discover. Connect. Support."<br>
+        "Built with heart, chaos, and caffeine."<br>
+        "Too many ideas. Ship the one that matters."<br>
+        "No pitch deck needed."
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 09. ARTICLES & BLOG POSTS -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="articles">
+    <div class="section-label">SECTION 09</div>
+    <h2 class="section-title">Articles & Blog Posts</h2>
+    <p class="section-desc">
+      Articles should feel like Martie wrote them — conversational, helpful, and structured for scannability. 
+      No corporate speak. No unnecessarily long intros.
+    </p>
+    <div class="divider"></div>
+
+    <div class="article-example">
+      <h3>How to Write a Great Tool Description (That Actually Gets Clicks)</h3>
+      <p>
+        Your tool description has one job: make someone curious enough to click through. 
+        That's it. Not to explain every feature. Not to list every use case. Just enough 
+        to spark interest.
+      </p>
+      <p>
+        Here's the thing — most people scan. They're not reading every word of every listing. 
+        They're looking for the one that feels like it solves their specific problem right now. 
+        So your description needs to be clear, specific, and human.
+      </p>
+      <p>
+        <strong>Start with the problem.</strong> What does your tool fix? "Automates cold email outreach" 
+        is better than "AI-powered sales enablement platform." The first one tells me what it does. 
+        The second one could be anything.
+      </p>
+      <p>
+        <strong>Keep it short.</strong> Two sentences is usually enough. Three if you need to clarify something. 
+        If you're writing a paragraph, you've lost them.
+      </p>
+      <p>
+        <strong>Skip the buzzwords.</strong> "Leverage" and "synergy" and "ecosystem" don't help. 
+        They just make your tool sound like every other tool. Use plain language.
+      </p>
+    </div>
+
+    <div class="checklist mt-2">
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>Lead with the benefit or problem.</strong> Don't bury it in the third paragraph.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>Use short paragraphs.</strong> 2-3 sentences max. Walls of text are intimidating.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>Use subheadings.</strong> Make it easy to scan. Every section should have a clear topic.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>End with a clear next step.</strong> What should the reader do after reading? Tell them.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>Read it out loud.</strong> If it sounds like a press release, rewrite it.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 10. EMAIL TEMPLATES -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="email-templates">
+    <div class="section-label">SECTION 10</div>
+    <h2 class="section-title">Email Templates</h2>
+    <p class="section-desc">
+      Emails should feel personal, not automated. Subject lines are direct or curious — never clickbait. 
+      Body copy is short paragraphs, one CTA, and a human sign-off.
+    </p>
+    <div class="divider"></div>
+
+    <div class="email-preview">
+      <div class="email-header">
+        <div class="email-subject">Your listing is live <span class="heart">♡</span></div>
+        <div class="email-from">From: SassyMartie</div>
+      </div>
+      <div class="email-body">
+        <p>Hey there,</p>
+        <p>
+          Your tool is now live on SassyMartie. People can find it, click through, 
+          and (hopefully) start using it.
+        </p>
+        <p>
+          Want to increase your chances of getting discovered? Share your listing 
+          on Twitter or LinkedIn. The more eyes on it, the better.
+        </p>
+        <p>
+          Good luck building. <span class="heart">♡</span>
+        </p>
+        <div class="email-signature">
+          — Martie<br>
+          SassyMartie
+        </div>
+      </div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD SUBJECT LINES
+        </div>
+        <div class="compare-content">
+          Your listing is live <span class="heart">♡</span><br>
+          Someone found your tool today<br>
+          Quick question about your listing<br>
+          Your monthly summary
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD SUBJECT LINES
+        </div>
+        <div class="compare-content">
+          You won't BELIEVE what happened!!!<br>
+          URGENT: Action Required<br>
+          Re: Your SassyMartie Account Status<br>
+          [Newsletter] October 2026 Edition
+        </div>
+        <div class="compare-reason">
+          Too clickbaity, too formal, or too boring.
+        </div>
+      </div>
+    </div>
+
+    <div class="email-preview">
+      <div class="email-header">
+        <div class="email-subject">Someone found your tool today</div>
+        <div class="email-from">From: SassyMartie</div>
+      </div>
+      <div class="email-body">
+        <p>Quick heads up —</p>
+        <p>
+          Your tool got 12 clicks in the past 24 hours. Not bad. 
+          That's 12 people who were curious enough to check it out.
+        </p>
+        <p>
+          Want to keep that momentum going? Update your listing with a fresh screenshot 
+          or a clearer description. Small tweaks can make a difference.
+        </p>
+        <div class="email-signature">
+          — Martie
+        </div>
+      </div>
+    </div>
+
+    <div class="callout mt-2">
+      <div class="callout-title">Email Writing Guidelines</div>
+      <div class="callout-content">
+        <strong>Subject line:</strong> Direct, curious, or news-shaped. Never clickbait.<br><br>
+        <strong>Opening:</strong> "Hey" or "Quick heads up" — not "Dear valued user."<br><br>
+        <strong>Body:</strong> Short paragraphs. One main point. One CTA.<br><br>
+        <strong>Sign-off:</strong> "— Martie" not "Sincerely, The SassyMartie Team."
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 11. SOCIAL MEDIA -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="social-media">
+    <div class="section-label">SECTION 11</div>
+    <h2 class="section-title">Social Media</h2>
+    <p class="section-desc">
+      Social is where the brand's casual side comes out most. The same pillars apply, but the tone drops 
+      a notch toward how Martie would actually talk in a DM or a thread.
+    </p>
+    <div class="divider"></div>
+
+    <div class="social-preview">
+      <div class="social-header">
+        <div class="social-avatar">S</div>
+        <div class="social-meta">
+          <div class="social-name">SassyMartie</div>
+          <div class="social-handle">@sassymartie</div>
+        </div>
+      </div>
+      <div class="social-content">
+        Too many ideas, not enough time. We know. That's why we built this — 
+        so at least people can find the one you actually shipped. <span class="heart">♡</span>
+      </div>
+      <div class="social-platform">TWITTER / X</div>
+    </div>
+
+    <div class="social-preview">
+      <div class="social-header">
+        <div class="social-avatar">S</div>
+        <div class="social-meta">
+          <div class="social-name">SassyMartie</div>
+          <div class="social-handle">@sassymartie</div>
+        </div>
+      </div>
+      <div class="social-content">
+        If your tool solves a real problem for real people, it belongs here. 
+        No pitch deck. No VC backing. Just ship it.
+      </div>
+      <div class="social-platform">LINKEDIN</div>
+    </div>
+
+    <div class="social-preview">
+      <div class="social-header">
+        <div class="social-avatar">S</div>
+        <div class="social-meta">
+          <div class="social-name">SassyMartie</div>
+          <div class="social-handle">@sassymartie</div>
+        </div>
+      </div>
+      <div class="social-content">
+        cold coffee, pizza box desk, shipping anyway — that's the vibe <span class="heart">♡</span>
+      </div>
+      <div class="social-platform">THREADS / BLUESKY</div>
+    </div>
+
+    <div class="callout mt-2">
+      <div class="callout-title">Platform-Specific Guidelines</div>
+      <div class="callout-content">
+        <strong>Twitter / X:</strong> Short, punchy, honest. No hashtag spam. One thought per tweet. 
+        Heart at the end when it earns it.<br><br>
+        <strong>Instagram:</strong> Illustration-first. Caption is secondary. Don't explain the image — react to it.<br><br>
+        <strong>LinkedIn:</strong> Still SassyMartie — but slightly less casual. No buzzwords. 
+        Builder stories, not growth metrics.<br><br>
+        <strong>Threads / Bluesky:</strong> Most casual. This is where Martie can ramble a little. 
+        Builder hot takes welcome.
+      </div>
+    </div>
+
+    <div class="checklist mt-2">
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>Never use engagement bait.</strong> "Comment YES if you agree" is banned.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>Don't post growth metrics as personality.</strong> "We hit 1,000 users!" is not interesting content.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>No competitor callouts or shade.</strong> Build your own thing, don't tear down others.
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-icon">✓</div>
+        <div class="checklist-text">
+          <strong>If it sounds like AI wrote it, rewrite it.</strong> No one wants to read robot copy.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 12. TONE BY CONTEXT -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="tone-by-context">
+    <div class="section-label">SECTION 12</div>
+    <h2 class="section-title">Tone by Context</h2>
+    <p class="section-desc">
+      Voice stays consistent. Tone shifts based on context. Here's how to adjust for different situations.
+    </p>
+    <div class="divider"></div>
+
+    <table class="tone-table">
+      <thead>
+        <tr>
+          <th>Context</th>
+          <th>Tone</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tone-context-label">Onboarding</span></td>
+          <td><span class="tone-description">Warm, guiding</span></td>
+          <td>
+            <div class="tone-example">
+              "Let's get your thing listed. It won't take long."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="tone-context-label">Empty states</span></td>
+          <td><span class="tone-description">Encouraging, low-pressure</span></td>
+          <td>
+            <div class="tone-example">
+              "Nothing here yet. Could be yours though."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="tone-context-label">Error messages</span></td>
+          <td><span class="tone-description">Honest, calm, helpful</span></td>
+          <td>
+            <div class="tone-example">
+              "Something went wrong on our end. Try again in a sec."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="tone-context-label">Success states</span></td>
+          <td><span class="tone-description">Genuine, not over-the-top</span></td>
+          <td>
+            <div class="tone-example">
+              "You're in. Go build."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="tone-context-label">CTAs</span></td>
+          <td><span class="tone-description">Clear, action-first</span></td>
+          <td>
+            <div class="tone-example">
+              "List your tool" · "Get discovered"
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="tone-context-label">Marketing copy</span></td>
+          <td><span class="tone-description">Confident, punchy</span></td>
+          <td>
+            <div class="tone-example">
+              "Built different. Listed here."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="tone-context-label">Community prompts</span></td>
+          <td><span class="tone-description">Casual, inviting</span></td>
+          <td>
+            <div class="tone-example">
+              "Drop your thoughts. We're all figuring this out."
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="tone-context-label">Email subjects</span></td>
+          <td><span class="tone-description">Curious or direct, no clickbait</span></td>
+          <td>
+            <div class="tone-example">
+              "Your listing is live ♡" · "Someone found your tool today"
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 13. WORD BANK -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="word-bank">
+    <div class="section-label">SECTION 13</div>
+    <h2 class="section-title">Word Bank</h2>
+    <p class="section-desc">
+      These words carry the brand. Use them intentionally. Some work everywhere. Some need the right context. 
+      Some should never appear.
+    </p>
+    <div class="divider"></div>
+
+    <div class="word-section-label">✓ USE FREELY</div>
+    <p class="section-desc" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+      These words make SassyMartie sound like itself, not like everyone else.
+    </p>
+    <div class="word-grid">
+      <div class="word-item use-freely">ship</div>
+      <div class="word-item use-freely">build</div>
+      <div class="word-item use-freely">tool</div>
+      <div class="word-item use-freely">product</div>
+      <div class="word-item use-freely">scrappy</div>
+      <div class="word-item use-freely">real</div>
+      <div class="word-item use-freely">honest</div>
+      <div class="word-item use-freely">indie</div>
+      <div class="word-item use-freely">solo</div>
+      <div class="word-item use-freely">founder</div>
+      <div class="word-item use-freely">chaos</div>
+      <div class="word-item use-freely">list</div>
+      <div class="word-item use-freely">get seen</div>
+      <div class="word-item use-freely">discover</div>
+      <div class="word-item use-freely">connect</div>
+      <div class="word-item use-freely">weird</div>
+      <div class="word-item use-freely">wild</div>
+      <div class="word-item use-freely">heart</div>
+    </div>
+
+    <div class="word-section-label">⚠ USE SPARINGLY</div>
+    <p class="section-desc" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+      These work in the right context. Don't force them. When they land naturally, they're perfect.
+    </p>
+    <div class="word-grid">
+      <div class="word-item use-sparingly">hacker</div>
+      <div class="word-item use-sparingly">indie hacker</div>
+      <div class="word-item use-sparingly">caffeine</div>
+      <div class="word-item use-sparingly">too many ideas</div>
+      <div class="word-item use-sparingly">code</div>
+    </div>
+
+    <div class="word-section-label">✗ NEVER USE</div>
+    <p class="section-desc" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+      These signal corporate detachment, hype culture, or plain bad taste. They are incompatible with SassyMartie.
+    </p>
+    <div class="word-grid">
+      <div class="word-item never-use">leverage</div>
+      <div class="word-item never-use">utilize</div>
+      <div class="word-item never-use">facilitate</div>
+      <div class="word-item never-use">seamless</div>
+      <div class="word-item never-use">frictionless</div>
+      <div class="word-item never-use">robust</div>
+      <div class="word-item never-use">world-class</div>
+      <div class="word-item never-use">industry-leading</div>
+      <div class="word-item never-use">synergy</div>
+      <div class="word-item never-use">ecosystem</div>
+      <div class="word-item never-use">monetize</div>
+      <div class="word-item never-use">users</div>
+      <div class="word-item never-use">stakeholders</div>
+      <div class="word-item never-use">deliverables</div>
+      <div class="word-item never-use">disruptive</div>
+    </div>
+
+    <div class="callout mt-2">
+      <div class="callout-title">Important Note</div>
+      <div class="callout-content">
+        "Users" should always be replaced with "people" or "builders". "Monetize" becomes "make money" or "get paid". 
+        The vocabulary shift is about treating builders as humans, not metrics.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 14. GOOD VS BAD EXAMPLES -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="good-vs-bad">
+    <div class="section-label">SECTION 14</div>
+    <h2 class="section-title">Good vs Bad Examples</h2>
+    <p class="section-desc">
+      The best way to learn the voice is to see it in action. Here are real examples of good copy 
+      vs the kind of copy that misses the mark.
+    </p>
+    <div class="divider"></div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: HOMEPAGE HERO</div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          <strong>Get your AI tool discovered.</strong><br><br>
+          SassyMartie is the curated directory for indie founders building AI-powered SaaS. 
+          Ship it. List it. Get seen.
+        </div>
+        <div class="compare-reason">
+          Clear benefit. Simple language. Action-oriented.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          <strong>Revolutionizing AI SaaS Discovery</strong><br><br>
+          Our cutting-edge platform leverages proprietary algorithms to facilitate seamless 
+          connections between world-class founders and enterprise stakeholders.
+        </div>
+        <div class="compare-reason">
+          Buzzword soup. Vague. Sounds like every other startup.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: EMPTY SEARCH RESULTS</div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          Nothing matches that search. Try something broader?
+        </div>
+        <div class="compare-reason">
+          Calm. Helpful. Doesn't blame the user.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          0 results found. Please refine your search query and try again.
+        </div>
+        <div class="compare-reason">
+          Robotic. Sounds like an error message, not helpful guidance.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: TOOL SUBMISSION CONFIRMATION</div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          You're listed. Your tool is live and people can find it now. Go tell someone. <span class="heart">♡</span>
+        </div>
+        <div class="compare-reason">
+          Genuine celebration. Clear next step. Human touch.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Congratulations!!! Your submission has been successfully processed and is now live 
+          in our directory!!!
+        </div>
+        <div class="compare-reason">
+          Too many exclamation marks. Sounds automated and fake.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: ABOUT PAGE</div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD
+        </div>
+        <div class="compare-content">
+          SassyMartie was built because good tools kept getting buried. The indie builder's problem 
+          isn't talent or effort — it's visibility. So we built the place to look.
+        </div>
+        <div class="compare-reason">
+          Honest. Tells the story. Explains the why.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD
+        </div>
+        <div class="compare-content">
+          Founded in 2026, SassyMartie is a mission-driven organization committed to empowering 
+          the global AI SaaS ecosystem through innovative discovery solutions.
+        </div>
+        <div class="compare-reason">
+          Corporate jargon. Sounds like a press release, not a real story.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <!-- 15. REAL SCENARIOS -->
+  <!-- ══════════════════════════════════════════════════════════════════════════════ -->
+  <section id="real-scenarios">
+    <div class="section-label">SECTION 15</div>
+    <h2 class="section-title">Real Scenarios</h2>
+    <p class="section-desc">
+      Here are complete examples of how to handle common writing situations — from feature announcements 
+      to support responses.
+    </p>
+    <div class="divider"></div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: NEW FEATURE ANNOUNCEMENT (EMAIL)</div>
+    </div>
+
+    <div class="email-preview mb-2">
+      <div class="email-header">
+        <div class="email-subject">Something new: Featured listings</div>
+        <div class="email-from">From: SassyMartie</div>
+      </div>
+      <div class="email-body">
+        <p>Quick update —</p>
+        <p>
+          We added featured listings. If you want your tool to show up at the top of the directory 
+          for a week, you can now do that. It's $49. One payment. No recurring charges.
+        </p>
+        <p>
+          Why would you do this? More visibility. More clicks. More people checking out your thing.
+        </p>
+        <p>
+          Not required. Not pushy. Just there if you want it.
+        </p>
+        <div class="email-signature">
+          — Martie
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: RESPONDING TO SUPPORT REQUEST</div>
+    </div>
+
+    <div class="compare-grid mb-2">
+      <div class="compare-box good">
+        <div class="compare-label">
+          <span class="compare-icon">✓</span>
+          GOOD RESPONSE
+        </div>
+        <div class="compare-content">
+          Hey —<br><br>
+          Just checked your listing. The link issue was on our end — fixed it. Should work now.<br><br>
+          Let me know if it's still acting weird.<br><br>
+          — Martie
+        </div>
+        <div class="compare-reason">
+          Direct. Takes responsibility. Offers to follow up.
+        </div>
+      </div>
+      <div class="compare-box bad">
+        <div class="compare-label">
+          <span class="compare-icon">✗</span>
+          BAD RESPONSE
+        </div>
+        <div class="compare-content">
+          Dear User,<br><br>
+          Thank you for contacting SassyMartie Support. We have reviewed your ticket (#2847) 
+          and resolved the reported issue. Please allow 24-48 hours for changes to propagate.<br><br>
+          Best regards,<br>
+          The SassyMartie Team
+        </div>
+        <div class="compare-reason">
+          Robotic. Formal. Sounds like an automated system, not a person.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: PRICING PAGE COPY</div>
+    </div>
+
+    <div class="article-example mb-2">
+      <h3>Simple Pricing</h3>
+      <p>
+        <strong>Free forever:</strong> List your tool. Get discovered. No credit card needed.
+      </p>
+      <p>
+        <strong>Featured listing ($49 one-time):</strong> Boost your tool to the top for 7 days. 
+        More visibility. More clicks. No recurring fees.
+      </p>
+      <p>
+        That's it. No hidden charges. No enterprise plans. Just two options.
+      </p>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pattern-context">SCENARIO: 404 ERROR PAGE</div>
+    </div>
+
+    <div class="article-example">
+      <h3>Hmm. That page doesn't exist.</h3>
+      <p>
+        Maybe it moved. Maybe it never did. Either way, it's not here.
+      </p>
+      <p>
+        <strong>Try this:</strong> Go back to the <a href="#" style="color: var(--red);">homepage</a> 
+        or <a href="#" style="color: var(--red);">browse all tools</a>.
+      </p>
+    </div>
+
+    <div class="callout mt-2">
+      <div class="callout-title">Key Takeaway</div>
+      <div class="callout-content">
+        Every piece of copy — from CTAs to error messages to emails — should pass the Martie Test. 
+        Would she say this to a friend at a hackathon? If not, rewrite it.
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--grey); font-size: 0.85rem;">
+    <p style="font-family: Arial, sans-serif;">
+      <strong style="color: var(--charcoal);">SassyMartie Copy & Language Guide</strong><br>
+      Version 1.0 — May 2026
+    </p>
+    <p style="margin-top: 1rem; font-style: italic;">
+      "Too many ideas. Ship the one that matters." <span class="heart">♡</span>
+    </p>
+    <p style="margin-top: 1rem; font-family: Arial, sans-serif; font-size: 0.75rem;">
+      Built with heart, chaos, and caffeine · sassymartie.com
+    </p>
+  </div>
+
+</main>
+
+</body>
+</html>

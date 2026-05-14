@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SassyMartie — Component Styles Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red: #C0392B;
+    --red-deep: #922B21;
+    --coral: #E8776F;
+    --charcoal: #2C2C2C;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --peach: #F5E6D3;
+    --grey: #6B6B6B;
+    --border: rgba(44,44,44,0.12);
+    --border-med: rgba(44,44,44,0.22);
+    --sidebar-w: 220px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  nav.sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2rem 1.25rem;
+    border-right: 1px solid var(--border);
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .sidebar-logo {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-logo .sassy {
+    font-family: 'Caveat', cursive;
+    color: var(--red);
+    font-size: 1.6rem;
+    line-height: 1;
+    display: block;
+  }
+  .sidebar-logo .martie {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+  }
+  .sidebar-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin: 1rem 0 0.25rem;
+  }
+  nav.sidebar a {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: var(--grey);
+    text-decoration: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+  }
+  nav.sidebar a:hover {
+    background: rgba(192,57,43,0.08);
+    color: var(--red);
+  }
+  nav.sidebar a.active {
+    color: var(--red);
+    font-weight: bold;
+  }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    padding: 3rem 4rem;
+    max-width: 860px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    margin-bottom: 5rem;
+  }
+
+  .section-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+  }
+  .section-desc {
+    color: var(--grey);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    max-width: 560px;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 2rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 0.75rem;
+  }
+  .hero-title {
+    font-family: Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .hero-title span { color: var(--red); font-family: 'Caveat', cursive; font-weight: 600; }
+  .hero-sub {
+    color: var(--grey);
+    font-size: 0.95rem;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+  .hero-tag {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--peach);
+    color: var(--red-deep);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  /* ── COLOR SWATCHES ── */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+  }
+  .swatch-group { display: flex; flex-direction: column; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .swatch-main {
+    height: 72px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5rem;
+  }
+  .swatch-hex {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    font-weight: bold;
+    opacity: 0.7;
+  }
+  .swatch-info {
+    background: var(--white);
+    padding: 0.5rem 0.6rem;
+  }
+  .swatch-name { font-family: Arial, sans-serif; font-size: 0.72rem; font-weight: bold; color: var(--charcoal); }
+  .swatch-use { font-family: Arial, sans-serif; font-size: 0.62rem; color: var(--grey); margin-top: 0.1rem; }
+
+  .swatch-extended {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-row {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    color: var(--grey);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .type-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: bold; color: var(--red); }
+
+  /* ── BUTTONS ── */
+  .component-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .component-row:last-child { border-bottom: none; }
+  .component-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grey);
+    min-width: 90px;
+  }
+  .component-items { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+  /* Brand Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    line-height: 1;
+  }
+  .btn:active { transform: scale(0.97); }
+
+  .btn-primary { background: var(--red); color: #fff; }
+  .btn-primary:hover { background: var(--red-deep); }
+
+  .btn-secondary { background: transparent; color: var(--red); border: 1.5px solid var(--red); }
+  .btn-secondary:hover { background: rgba(192,57,43,0.06); }
+
+  .btn-ghost { background: transparent; color: var(--charcoal); border: 1.5px solid var(--border-med); }
+  .btn-ghost:hover { background: rgba(44,44,44,0.05); }
+
+  .btn-coral { background: var(--coral); color: #fff; }
+  .btn-coral:hover { background: #d96b62; }
+
+  .btn-danger { background: transparent; color: #922B21; border: 1.5px solid #922B21; }
+  .btn-danger:hover { background: rgba(146,43,33,0.06); }
+
+  .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
+  .btn-lg { padding: 0.7rem 1.4rem; font-size: 0.875rem; }
+
+  .btn-disabled { opacity: 0.4; pointer-events: none; }
+
+  /* ── TAGS / BADGES ── */
+  .tag {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+  }
+  .tag-red { background: rgba(192,57,43,0.1); color: var(--red-deep); }
+  .tag-coral { background: rgba(232,119,111,0.15); color: #893f3a; }
+  .tag-peach { background: var(--peach); color: #7a5a3a; }
+  .tag-grey { background: rgba(107,107,107,0.1); color: var(--grey); }
+  .tag-charcoal { background: rgba(44,44,44,0.08); color: var(--charcoal); }
+  .tag-outline { background: transparent; color: var(--red); border: 1px solid var(--red); }
+
+  /* ── FORM ELEMENTS ── */
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 0.35rem;
+  }
+  .form-hint {
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--grey);
+    margin-top: 0.3rem;
+  }
+  .form-input {
+    width: 100%;
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    background: var(--white);
+    border: 1.5px solid var(--border-med);
+    border-radius: 5px;
+    padding: 0.6rem 0.85rem;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    appearance: none;
+  }
+  .form-input::placeholder { color: var(--grey); font-style: italic; }
+  .form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(192,57,43,0.12); }
+  .form-input.error { border-color: var(--red-deep); box-shadow: 0 0 0 3px rgba(146,43,33,0.1); }
+  .form-input.success { border-color: #5a8a4e; box-shadow: 0 0 0 3px rgba(90,138,78,0.1); }
+
+  textarea.form-input { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-error-msg {
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--red-deep);
+    margin-top: 0.3rem;
+  }
+  .form-success-msg {
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    color: #4a7a3e;
+    margin-top: 0.3rem;
+  }
+
+  /* ── STATE MESSAGES ── */
+  .state-box {
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .state-icon { font-size: 2rem; margin-bottom: 0.5rem; line-height: 1; }
+  .state-title {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    margin-bottom: 0.25rem;
+  }
+  .state-body {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: var(--grey);
+    margin-bottom: 0.75rem;
+  }
+
+  .state-empty { background: var(--peach); }
+  .state-error { background: rgba(192,57,43,0.07); border: 1px solid rgba(192,57,43,0.2); }
+  .state-success { background: rgba(90,138,78,0.07); border: 1px solid rgba(90,138,78,0.2); }
+  .state-loading { background: rgba(107,107,107,0.07); border: 1px solid var(--border); }
+
+  .state-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ── INLINE BANNERS ── */
+  .banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+  }
+  .banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .banner-content { flex: 1; }
+  .banner-title {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.15rem;
+  }
+  .banner-body { font-family: Arial, sans-serif; font-size: 0.75rem; }
+
+  .banner-error { background: rgba(192,57,43,0.07); border-left: 3px solid var(--red); }
+  .banner-error .banner-title { color: var(--red-deep); }
+  .banner-error .banner-body { color: var(--grey); }
+
+  .banner-success { background: rgba(90,138,78,0.07); border-left: 3px solid #5a8a4e; }
+  .banner-success .banner-title { color: #3a6a2e; }
+  .banner-success .banner-body { color: var(--grey); }
+
+  .banner-info { background: rgba(44,44,44,0.05); border-left: 3px solid var(--grey); }
+  .banner-info .banner-title { color: var(--charcoal); }
+  .banner-info .banner-body { color: var(--grey); }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .card-tag-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .card-title {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+  .card-desc { font-family: Arial, sans-serif; font-size: 0.78rem; color: var(--grey); line-height: 1.5; margin-bottom: 0.75rem; }
+  .card-footer { border-top: 1px solid var(--border); margin-top: 0.75rem; padding-top: 0.75rem; display: flex; align-items: center; justify-content: space-between; }
+  .card-meta { font-family: Arial, sans-serif; font-size: 0.68rem; color: var(--grey); }
+
+  .card-featured {
+    background: var(--white);
+    border: 2px solid var(--red);
+    border-radius: 8px;
+    padding: 1.25rem;
+    position: relative;
+  }
+  .card-badge {
+    position: absolute;
+    top: -10px; left: 1rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--red);
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .card-peach { background: var(--peach); border: none; }
+
+  /* ── NAVIGATION ── */
+  .nav-bar {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .nav-brand {
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    color: var(--red);
+    letter-spacing: 0;
+    text-decoration: none;
+  }
+  .nav-brand span { font-family: Georgia, serif; font-weight: bold; font-size: 0.9rem; color: var(--charcoal); }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-link {
+    font-family: Arial, sans-serif;
+    font-size: 0.78rem;
+    font-weight: bold;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--red); }
+  .nav-actions { display: flex; gap: 0.5rem; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    color: var(--grey);
+  }
+  .breadcrumb a { color: var(--grey); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--red); }
+  .breadcrumb-sep { color: var(--border-med); }
+  .breadcrumb-current { color: var(--charcoal); font-weight: bold; }
+
+  /* ── BLOCKQUOTE ── */
+  blockquote.brand-quote {
+    border-left: 3px solid var(--red);
+    margin: 0;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+  blockquote.brand-quote cite {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-style: normal;
+    color: var(--grey);
+    margin-top: 0.5rem;
+  }
+
+  /* ── LOADING SPINNER ── */
+  .spinner {
+    display: inline-block;
+    width: 18px; height: 18px;
+    border: 2px solid rgba(192,57,43,0.2);
+    border-top-color: var(--red);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── VOICE EXAMPLES ── */
+  .voice-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .voice-box {
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    font-family: Georgia, serif;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .voice-do {
+    background: rgba(90,138,78,0.07);
+    border: 1px solid rgba(90,138,78,0.2);
+    color: var(--charcoal);
+  }
+  .voice-dont {
+    background: rgba(192,57,43,0.06);
+    border: 1px solid rgba(192,57,43,0.15);
+    color: var(--charcoal);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+  }
+  .voice-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.62rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.35rem;
+  }
+  .voice-do .voice-label { color: #4a7a3e; }
+  .voice-dont .voice-label { color: var(--red-deep); text-decoration: none; }
+
+  /* ── WORD BANK ── */
+  .word-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .word-chip {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .chip-use { background: var(--peach); color: var(--charcoal); }
+  .chip-sparingly { background: rgba(232,119,111,0.15); color: #7a3530; }
+  .chip-never { background: rgba(44,44,44,0.06); color: var(--grey); text-decoration: line-through; }
+
+  /* ── TOOLTIP ── */
+  .tooltip-demo { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: flex-start; }
+  .tooltip-wrap { position: relative; display: inline-block; }
+  .tooltip-bubble {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%; transform: translateX(-50%);
+    background: var(--charcoal);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 0.68rem;
+    white-space: nowrap;
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  .tooltip-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 50%; transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--charcoal);
+  }
+
+  /* ── TOGGLE ── */
+  .toggle-wrap { display: flex; align-items: center; gap: 0.65rem; }
+  .toggle {
+    position: relative;
+    width: 38px; height: 22px;
+    flex-shrink: 0;
+  }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle-track {
+    position: absolute;
+    inset: 0;
+    background: var(--border-med);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .toggle input:checked + .toggle-track { background: var(--red); }
+  .toggle-thumb {
+    position: absolute;
+    height: 16px; width: 16px;
+    left: 3px; top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    pointer-events: none;
+  }
+  .toggle input:checked ~ .toggle-thumb { transform: translateX(16px); }
+  .toggle-label { font-family: Arial, sans-serif; font-size: 0.82rem; color: var(--charcoal); }
+
+  /* ── AVATAR ── */
+  .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    border: 2px solid var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: var(--red-deep);
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .heart { color: var(--red); }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar-outer {
+    height: 6px;
+    background: rgba(44,44,44,0.1);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 0.3rem;
+  }
+  .progress-bar-inner { height: 100%; background: var(--red); border-radius: 100px; }
+
+  /* ── STEP INDICATOR ── */
+  .steps { display: flex; align-items: center; gap: 0; }
+  .step-item { display: flex; align-items: center; }
+  .step-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--border-med);
+    background: var(--white);
+    font-family: Arial, sans-serif;
+    font-size: 0.68rem;
+    font-weight: bold;
+    color: var(--grey);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-dot.done { background: var(--red); border-color: var(--red); color: #fff; }
+  .step-dot.active { border-color: var(--red); color: var(--red); }
+  .step-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.68rem;
+    color: var(--grey);
+    margin-left: 0.4rem;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+  }
+  .step-label.active { color: var(--red); font-weight: bold; }
+  .step-connector { width: 28px; height: 2px; background: var(--border-med); flex-shrink: 0; }
+  .step-connector.done { background: var(--red); }
+
+  /* ── UTILITIES ── */
+  .mt1 { margin-top: 1rem; }
+  .mt2 { margin-top: 2rem; }
+  .subsection-title {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    nav.sidebar { display: none; }
+    main { padding: 2rem 1.5rem; }
+    .form-grid, .card-grid, .state-grid, .voice-pair { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <span class="sassy">Sassy</span>
+    <span class="martie">Martie</span>
+  </div>
+
+  <p class="sidebar-label">Brand</p>
+  <a href="#colors">Color Palette</a>
+  <a href="#typography">Typography</a>
+  <a href="#logo">Logo Rules</a>
+
+  <p class="sidebar-label">Components</p>
+  <a href="#buttons">Buttons & CTAs</a>
+  <a href="#tags">Tags & Badges</a>
+  <a href="#forms">Form Elements</a>
+  <a href="#cards">Cards</a>
+  <a href="#states">State Messages</a>
+  <a href="#banners">Inline Banners</a>
+  <a href="#navigation">Navigation</a>
+  <a href="#controls">Controls</a>
+
+  <p class="sidebar-label">Voice</p>
+  <a href="#voice">Voice & Tone</a>
+  <a href="#wordbank">Word Bank</a>
+  <a href="#copy">Copy Patterns</a>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">Version 1.0 — May 2026</p>
+    <h1 class="hero-title">Component <span>Styles</span> Guide</h1>
+    <p class="hero-sub">A living reference for anyone building inside the SassyMartie universe. Every colour, type size, button state, and copy pattern — all in one place.</p>
+    <span class="hero-tag">Built with heart, chaos, and caffeine ♡</span>
+  </div>
+
+
+  <!-- COLORS -->
+  <section id="colors">
+    <p class="section-label">01 — Brand Foundation</p>
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Warm and grounded. Built around the tension between cream paper and burnt red. Charcoal anchors everything without going cold.</p>
+
+    <p class="subsection-title">Primary Palette</p>
+    <div class="swatch-grid">
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#C0392B;">
+          <span class="swatch-hex" style="color:rgba(255,255,255,0.7)">#C0392B</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand Red</div>
+          <div class="swatch-use">CTAs · Identity · Tags</div>
+        </div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#2C2C2C;">
+          <span class="swatch-hex" style="color:rgba(255,255,255,0.5)">#2C2C2C</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Charcoal</div>
+          <div class="swatch-use">Headlines · Body text</div>
+        </div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#FAF7F2; border-bottom:1px solid #eee;">
+          <span class="swatch-hex" style="color:rgba(0,0,0,0.35)">#FAF7F2</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cream</div>
+          <div class="swatch-use">Page backgrounds</div>
+        </div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#FFFFFF; border-bottom:1px solid #eee;">
+          <span class="swatch-hex" style="color:rgba(0,0,0,0.25)">#FFFFFF</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-use">Card · Panel surfaces</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="subsection-title">Extended Palette</p>
+    <div class="swatch-extended">
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#922B21;">
+          <span class="swatch-hex" style="color:rgba(255,255,255,0.6)">#922B21</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Red</div>
+          <div class="swatch-use">Hover · Depth</div>
+        </div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#E8776F;">
+          <span class="swatch-hex" style="color:rgba(255,255,255,0.7)">#E8776F</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Coral</div>
+          <div class="swatch-use">Accents · Secondary actions</div>
+        </div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#F5E6D3;">
+          <span class="swatch-hex" style="color:rgba(0,0,0,0.35)">#F5E6D3</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm Peach</div>
+          <div class="swatch-use">Card bgs · Highlights</div>
+        </div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch-main" style="background:#6B6B6B;">
+          <span class="swatch-hex" style="color:rgba(255,255,255,0.6)">#6B6B6B</span>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Mid Grey</div>
+          <div class="swatch-use">Meta · Helper text</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TYPOGRAPHY -->
+  <section id="typography">
+    <p class="section-label">02 — Brand Foundation</p>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">Georgia for warmth and readability. Arial for labels and UI. Never more than two typefaces in one layout.</p>
+    <div class="divider"></div>
+
+    <div class="type-row">
+      <div>
+        <div style="font-family:'Caveat',cursive;font-size:2.8rem;color:var(--red);line-height:1;">SassyMartie</div>
+      </div>
+      <div class="type-meta"><span class="type-tag">Display</span><br>Caveat 600<br>Logo only</div>
+    </div>
+
+    <div class="type-row">
+      <div style="font-family:Georgia,serif;font-weight:bold;font-size:2.5rem;color:var(--charcoal);line-height:1.15;">List your tool.</div>
+      <div class="type-meta"><span class="type-tag">Heading 1</span><br>Georgia Bold<br>40pt / 2.5rem</div>
+    </div>
+
+    <div class="type-row">
+      <div style="font-family:Arial,sans-serif;font-weight:bold;font-size:1.75rem;color:var(--charcoal);">What it does.</div>
+      <div class="type-meta"><span class="type-tag">Heading 2</span><br>Arial Bold<br>28pt / 1.75rem</div>
+    </div>
+
+    <div class="type-row">
+      <div style="font-family:Arial,sans-serif;font-weight:bold;font-size:1.375rem;color:var(--charcoal);">Built different, listed here.</div>
+      <div class="type-meta"><span class="type-tag">Heading 3</span><br>Arial Bold<br>22pt / 1.375rem</div>
+    </div>
+
+    <div class="type-row">
+      <div style="font-family:Georgia,serif;font-size:1.1rem;color:var(--charcoal);line-height:1.6;max-width:460px;">SassyMartie is a curated directory for founders building AI-powered SaaS products — the weird, the wild, and the scrappy. It exists for indie hackers and solo builders who ship real things.</div>
+      <div class="type-meta"><span class="type-tag">Body</span><br>Georgia Regular<br>1.1rem · Line-h 1.6</div>
+    </div>
+
+    <div class="type-row">
+      <div style="font-family:Arial,sans-serif;font-weight:bold;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--charcoal);">List Your Tool</div>
+      <div class="type-meta"><span class="type-tag">UI Label</span><br>Arial Bold<br>0.875rem · ALL CAPS</div>
+    </div>
+
+    <div class="type-row">
+      <div style="font-family:Arial,sans-serif;font-size:0.8rem;color:var(--grey);">Listed 3 days ago · 47 views · AI / Productivity</div>
+      <div class="type-meta"><span class="type-tag">Caption</span><br>Arial Regular<br>0.8rem · Mid Grey</div>
+    </div>
+
+    <div class="type-row" style="border-bottom:none;">
+      <blockquote class="brand-quote" style="font-size:1.15rem;">
+        "Too many ideas. Ship the one that matters."
+        <cite>— The SassyMartie mantra</cite>
+      </blockquote>
+      <div class="type-meta"><span class="type-tag">Pull Quote</span><br>Georgia Italic<br>1.25rem · Red border</div>
+    </div>
+  </section>
+
+
+  <!-- LOGO -->
+  <section id="logo">
+    <p class="section-label">03 — Brand Foundation</p>
+    <h2 class="section-title">Logo Rules</h2>
+    <p class="section-desc">The logo is the wordmark. Never distort, recolour, or separate "Sassy" from "Martie".</p>
+
+    <div class="card-grid">
+      <div>
+        <p class="subsection-title" style="margin-top:0;">✅ Do</p>
+        <div class="banner banner-success">
+          <div class="banner-content">
+            <div class="banner-title">Correct</div>
+            <div class="banner-body">Use on cream or white backgrounds. Maintain clear space equal to the height of the "M".</div>
+          </div>
+        </div>
+        <div class="banner banner-success">
+          <div class="banner-content">
+            <div class="banner-title">Scale proportionally</div>
+            <div class="banner-body">Digital min: 120px wide. Print min: 1.5 inches.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="subsection-title" style="margin-top:0;">❌ Never</p>
+        <div class="banner banner-error">
+          <div class="banner-content">
+            <div class="banner-title">No distortion or rotation</div>
+            <div class="banner-body">Never skew, stretch, or add shadows, bevels, or glows.</div>
+          </div>
+        </div>
+        <div class="banner banner-error">
+          <div class="banner-content">
+            <div class="banner-title">No unapproved colours</div>
+            <div class="banner-body">Never separate "Sassy" from "Martie". Never recolour to off-brand tones.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BUTTONS -->
+  <section id="buttons">
+    <p class="section-label">04 — Components</p>
+    <h2 class="section-title">Buttons & CTAs</h2>
+    <p class="section-desc">Verb-first, short, purposeful. Primary is Brand Red. Secondary is outlined. Never "Click here".</p>
+    <div class="divider"></div>
+
+    <div class="component-row">
+      <span class="component-label">Primary</span>
+      <div class="component-items">
+        <button class="btn btn-primary btn-sm">List your tool</button>
+        <button class="btn btn-primary">List your tool</button>
+        <button class="btn btn-primary btn-lg">List your tool</button>
+      </div>
+    </div>
+    <div class="component-row">
+      <span class="component-label">Secondary</span>
+      <div class="component-items">
+        <button class="btn btn-secondary btn-sm">See how it works</button>
+        <button class="btn btn-secondary">Browse tools</button>
+        <button class="btn btn-secondary btn-lg">Get discovered</button>
+      </div>
+    </div>
+    <div class="component-row">
+      <span class="component-label">Ghost</span>
+      <div class="component-items">
+        <button class="btn btn-ghost btn-sm">Cancel</button>
+        <button class="btn btn-ghost">Maybe later</button>
+      </div>
+    </div>
+    <div class="component-row">
+      <span class="component-label">Coral</span>
+      <div class="component-items">
+        <button class="btn btn-coral">Join</button>
+        <button class="btn btn-coral btn-sm">Add your first tool</button>
+      </div>
+    </div>
+    <div class="component-row">
+      <span class="component-label">Destructive</span>
+      <div class="component-items">
+        <button class="btn btn-danger">Remove this</button>
+        <button class="btn btn-danger btn-sm">Delete</button>
+      </div>
+    </div>
+    <div class="component-row">
+      <span class="component-label">Disabled</span>
+      <div class="component-items">
+        <button class="btn btn-primary btn-disabled" disabled>List your tool</button>
+        <button class="btn btn-secondary btn-disabled" disabled>Browse tools</button>
+      </div>
+    </div>
+    <div class="component-row" style="border-bottom:none;">
+      <span class="component-label">Loading</span>
+      <div class="component-items">
+        <button class="btn btn-primary" style="gap:0.5rem;">
+          <span class="spinner" style="border-top-color:#fff;border-color:rgba(255,255,255,0.3);border-top-color:#fff;width:14px;height:14px;border-width:2px;"></span>
+          On it...
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TAGS -->
+  <section id="tags">
+    <p class="section-label">05 — Components</p>
+    <h2 class="section-title">Tags & Badges</h2>
+    <p class="section-desc">Used for categories, statuses, and metadata. Short, never more than 2–3 words.</p>
+    <div class="divider"></div>
+
+    <div class="component-row">
+      <span class="component-label">Filled</span>
+      <div class="component-items">
+        <span class="tag tag-red">AI</span>
+        <span class="tag tag-coral">Productivity</span>
+        <span class="tag tag-peach">Indie</span>
+        <span class="tag tag-charcoal">SaaS</span>
+        <span class="tag tag-grey">Beta</span>
+      </div>
+    </div>
+    <div class="component-row" style="border-bottom:none;">
+      <span class="component-label">Outline</span>
+      <div class="component-items">
+        <span class="tag tag-outline">New</span>
+        <span class="tag" style="background:transparent;color:var(--grey);border:1px solid var(--grey);">Free</span>
+        <span class="tag" style="background:transparent;color:#5a8a4e;border:1px solid #5a8a4e;">Listed</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FORMS -->
+  <section id="forms">
+    <p class="section-label">06 — Components</p>
+    <h2 class="section-title">Form Elements</h2>
+    <p class="section-desc">Placeholders give a real hint — not just a repeated field label. The user is smart. Trust them.</p>
+    <div class="divider"></div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">Product Name</label>
+        <input type="text" class="form-input" placeholder="What do people call it?" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">URL</label>
+        <input type="url" class="form-input" placeholder="Where do people find it?" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea class="form-input" placeholder="What does it do? Keep it human."></textarea>
+      <p class="form-hint">2–3 sentences max. Martie would say: "If you can't explain it in a tweet, trim it."</p>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-input">
+          <option value="" disabled selected>Pick the closest fit</option>
+          <option>AI / Automation</option>
+          <option>Productivity</option>
+          <option>Developer Tools</option>
+          <option>Marketing</option>
+          <option>Analytics</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Pricing</label>
+        <select class="form-input">
+          <option value="" disabled selected>How do builders pay?</option>
+          <option>Free</option>
+          <option>Freemium</option>
+          <option>Paid</option>
+          <option>Open Source</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="subsection-title">Input States</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">Error State</label>
+        <input type="url" class="form-input error" value="notaurl" />
+        <p class="form-error-msg">That link doesn't seem right. Double-check it?</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Success State</label>
+        <input type="text" class="form-input success" value="ShipFast Pro" />
+        <p class="form-success-msg">Saved. ♡</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CARDS -->
+  <section id="cards">
+    <p class="section-label">07 — Components</p>
+    <h2 class="section-title">Cards</h2>
+    <p class="section-desc">Tool listing cards, featured cards, and callout cards — all warm and grounded.</p>
+    <div class="divider"></div>
+
+    <div class="card-grid">
+      <!-- Standard card -->
+      <div class="card">
+        <div class="card-tag-row">
+          <span class="tag tag-red">AI</span>
+          <span class="tag tag-peach">Productivity</span>
+        </div>
+        <div class="card-title">ShipFast Pro</div>
+        <div class="card-desc">Boilerplate for indie hackers who need to ship in a weekend, not a quarter. Auth, billing, database — done.</div>
+        <button class="btn btn-secondary btn-sm">Get discovered</button>
+        <div class="card-footer">
+          <div class="card-meta">Listed 3 days ago</div>
+          <div class="card-meta">47 views</div>
+        </div>
+      </div>
+
+      <!-- Featured card -->
+      <div class="card-featured">
+        <span class="card-badge">Featured ♡</span>
+        <div class="card-tag-row" style="margin-top:0.5rem;">
+          <span class="tag tag-coral">SaaS</span>
+          <span class="tag tag-charcoal">Free</span>
+        </div>
+        <div class="card-title">NudgeAI</div>
+        <div class="card-desc">Sends smart nudges to keep builders shipping. Built by a solo founder over one weekend. Simple. It works.</div>
+        <button class="btn btn-primary btn-sm">List your tool</button>
+        <div class="card-footer">
+          <div class="card-meta">Listed yesterday</div>
+          <div class="card-meta">112 views</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peach callout card -->
+    <div class="card card-peach mt1">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="avatar">SM</div>
+        <div>
+          <div class="card-title" style="margin-bottom:0.1rem;">Nothing here yet.</div>
+          <div class="card-desc" style="margin-bottom:0;">Could be your tool. It's free to list.</div>
+        </div>
+        <div style="margin-left:auto;flex-shrink:0;">
+          <button class="btn btn-primary btn-sm">Add your first tool</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- STATES -->
+  <section id="states">
+    <p class="section-label">08 — Components</p>
+    <h2 class="section-title">State Messages</h2>
+    <p class="section-desc">Empty, error, success, loading — all honest, calm, and never over-dramatic.</p>
+    <div class="divider"></div>
+
+    <div class="state-grid">
+      <div class="state-box state-empty">
+        <div class="state-icon">☕</div>
+        <div class="state-title">Nothing here yet.</div>
+        <div class="state-body">Could be yours though.</div>
+        <button class="btn btn-primary btn-sm">Add your first tool</button>
+      </div>
+
+      <div class="state-box state-error">
+        <div class="state-icon">⚡</div>
+        <div class="state-title">Something went wrong on our end.</div>
+        <div class="state-body">Try again in a sec.</div>
+        <button class="btn btn-secondary btn-sm">Try again</button>
+      </div>
+
+      <div class="state-box state-success">
+        <div class="state-icon">♡</div>
+        <div class="state-title">You're listed. Go tell someone.</div>
+        <div class="state-body">Your tool is live on SassyMartie.</div>
+        <button class="btn btn-ghost btn-sm">View your listing</button>
+      </div>
+
+      <div class="state-box state-loading">
+        <div class="state-icon"><span class="spinner" style="width:28px;height:28px;border-width:3px;display:inline-block;"></span></div>
+        <div class="state-title" style="margin-top:0.5rem;">Finding the good stuff...</div>
+        <div class="state-body">One sec.</div>
+      </div>
+    </div>
+
+    <!-- 404 -->
+    <div class="card mt1" style="text-align:center;padding:2.5rem;">
+      <div style="font-family:Georgia,serif;font-size:3rem;font-weight:bold;color:var(--border-med);line-height:1;margin-bottom:0.75rem;">404</div>
+      <div class="state-title">Hmm. That page doesn't exist.</div>
+      <div class="state-body" style="margin:0.4rem 0 1rem;">Maybe it moved. Maybe it never did.</div>
+      <button class="btn btn-primary btn-sm">Back to safety</button>
+    </div>
+  </section>
+
+
+  <!-- BANNERS -->
+  <section id="banners">
+    <p class="section-label">09 — Components</p>
+    <h2 class="section-title">Inline Banners</h2>
+    <p class="section-desc">Honest, calm, helpful. Never alarming for its own sake.</p>
+    <div class="divider"></div>
+
+    <div class="banner banner-error">
+      <div class="banner-icon">⚡</div>
+      <div class="banner-content">
+        <div class="banner-title">That link doesn't seem right.</div>
+        <div class="banner-body">Double-check it? It should look like: https://yourproduct.com</div>
+      </div>
+    </div>
+
+    <div class="banner banner-success">
+      <div class="banner-icon">♡</div>
+      <div class="banner-content">
+        <div class="banner-title">Done. Your tool is live.</div>
+        <div class="banner-body">You're in. Go build — and maybe tell someone it exists.</div>
+      </div>
+    </div>
+
+    <div class="banner banner-info">
+      <div class="banner-icon">→</div>
+      <div class="banner-content">
+        <div class="banner-title">Too many ideas, not enough time. We know.</div>
+        <div class="banner-body">Pick one. Ship that one. The rest will still be there.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- NAVIGATION -->
+  <section id="navigation">
+    <p class="section-label">10 — Components</p>
+    <h2 class="section-title">Navigation</h2>
+    <p class="section-desc">Clear and purposeful. No buried links. No labyrinthine menus.</p>
+    <div class="divider"></div>
+
+    <p class="subsection-title" style="margin-top:0;">Nav Bar</p>
+    <div class="nav-bar">
+      <a href="#" class="nav-brand">Sassy <span>Martie</span></a>
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Browse</a>
+        <a href="#" class="nav-link">Submit</a>
+        <a href="#" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm">Sign in</button>
+        <button class="btn btn-primary btn-sm">List your tool</button>
+      </div>
+    </div>
+
+    <p class="subsection-title">Breadcrumb</p>
+    <div class="breadcrumb">
+      <a href="#">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="#">AI Tools</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">ShipFast Pro</span>
+    </div>
+
+    <p class="subsection-title">Step Indicator</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-dot done">✓</div>
+        <span class="step-label">Tell us about your tool</span>
+      </div>
+      <div class="step-connector done"></div>
+      <div class="step-item">
+        <div class="step-dot active">2</div>
+        <span class="step-label active">Add a link</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item">
+        <div class="step-dot">3</div>
+        <span class="step-label">You're done</span>
+      </div>
+    </div>
+
+    <p class="subsection-title">Progress Bar</p>
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:0.35rem;">
+        <span style="font-family:Arial,sans-serif;font-size:0.72rem;color:var(--grey);">Step 2 of 3 — Add a link</span>
+        <span style="font-family:Arial,sans-serif;font-size:0.72rem;color:var(--red);font-weight:bold;">66%</span>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" style="width:66%;"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTROLS -->
+  <section id="controls">
+    <p class="section-label">11 — Components</p>
+    <h2 class="section-title">Controls</h2>
+    <p class="section-desc">Toggles, tooltips, avatars. Keep interactions simple and obvious.</p>
+    <div class="divider"></div>
+
+    <p class="subsection-title" style="margin-top:0;">Toggles</p>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      <label class="toggle-wrap">
+        <div class="toggle">
+          <input type="checkbox" checked />
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </div>
+        <span class="toggle-label">Email me when someone finds my tool</span>
+      </label>
+      <label class="toggle-wrap">
+        <div class="toggle">
+          <input type="checkbox" />
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </div>
+        <span class="toggle-label">Show my listing in the featured section</span>
+      </label>
+    </div>
+
+    <p class="subsection-title">Tooltips</p>
+    <div class="tooltip-demo">
+      <div class="tooltip-wrap">
+        <div class="tooltip-bubble">Built with heart, chaos, and caffeine ♡</div>
+        <button class="btn btn-ghost btn-sm">Hover state</button>
+      </div>
+      <div class="tooltip-wrap">
+        <div class="tooltip-bubble">No VC. No pitch. Just code.</div>
+        <button class="btn btn-secondary btn-sm">Another tooltip</button>
+      </div>
+    </div>
+
+    <p class="subsection-title">Avatars</p>
+    <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+      <div class="avatar" style="width:32px;height:32px;font-size:0.62rem;">SM</div>
+      <div class="avatar">MJ</div>
+      <div class="avatar" style="width:52px;height:52px;font-size:0.9rem;">AB</div>
+      <div class="avatar" style="background:var(--red);color:#fff;border-color:var(--red-deep);">♡</div>
+    </div>
+  </section>
+
+
+  <!-- VOICE -->
+  <section id="voice">
+    <p class="section-label">12 — Voice & Tone</p>
+    <h2 class="section-title">Voice & Tone</h2>
+    <p class="section-desc">Talk like the friendly senior who remembers what it felt like to be new — warm, direct, no fluff, occasionally funny but never trying hard.</p>
+    <div class="divider"></div>
+
+    <blockquote class="brand-quote" style="margin-bottom:2rem;">
+      "Would Martie say this to a new friend at a hackathon?"
+      <cite>— The Martie Test</cite>
+    </blockquote>
+
+    <div class="voice-pair">
+      <div class="voice-box voice-do">
+        <div class="voice-label">✅ Do</div>
+        "Hey, glad you're here."
+      </div>
+      <div class="voice-box voice-dont">
+        <div class="voice-label">❌ Never</div>
+        "Welcome to our AMAZING community of INCREDIBLE creators!!!"
+      </div>
+    </div>
+    <div class="voice-pair">
+      <div class="voice-box voice-do">
+        <div class="voice-label">✅ Do</div>
+        "List your tool. Tell people what it does. Done."
+      </div>
+      <div class="voice-box voice-dont">
+        <div class="voice-label">❌ Never</div>
+        "Our platform facilitates the seamless submission and discoverability of your software product."
+      </div>
+    </div>
+    <div class="voice-pair">
+      <div class="voice-box voice-do">
+        <div class="voice-label">✅ Do</div>
+        "We're small but growing. And we're building this with you."
+      </div>
+      <div class="voice-box voice-dont">
+        <div class="voice-label">❌ Never</div>
+        "The #1 AI SaaS directory trusted by thousands of world-class founders!"
+      </div>
+    </div>
+    <div class="voice-pair">
+      <div class="voice-box voice-do">
+        <div class="voice-label">✅ Do</div>
+        "Too many ideas, not enough time. We know."
+      </div>
+      <div class="voice-box voice-dont">
+        <div class="voice-label">❌ Never</div>
+        "Leverage our robust ecosystem to monetize your disruptive solution."
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WORD BANK -->
+  <section id="wordbank">
+    <p class="section-label">13 — Voice & Tone</p>
+    <h2 class="section-title">Word Bank</h2>
+    <p class="section-desc">The vocabulary that makes SassyMartie sound like itself, not like everyone else.</p>
+    <div class="divider"></div>
+
+    <p class="subsection-title" style="margin-top:0;">Use Freely</p>
+    <div class="word-cloud">
+      <span class="word-chip chip-use">ship</span>
+      <span class="word-chip chip-use">build</span>
+      <span class="word-chip chip-use">tool</span>
+      <span class="word-chip chip-use">scrappy</span>
+      <span class="word-chip chip-use">real</span>
+      <span class="word-chip chip-use">honest</span>
+      <span class="word-chip chip-use">indie</span>
+      <span class="word-chip chip-use">solo</span>
+      <span class="word-chip chip-use">founder</span>
+      <span class="word-chip chip-use">chaos</span>
+      <span class="word-chip chip-use">get seen</span>
+      <span class="word-chip chip-use">discover</span>
+      <span class="word-chip chip-use">heart</span>
+      <span class="word-chip chip-use">weird</span>
+      <span class="word-chip chip-use">wild</span>
+      <span class="word-chip chip-use">built different</span>
+      <span class="word-chip chip-use">lemme in</span>
+    </div>
+
+    <p class="subsection-title">Use Sparingly</p>
+    <div class="word-cloud">
+      <span class="word-chip chip-sparingly">hacker</span>
+      <span class="word-chip chip-sparingly">indie hacker</span>
+      <span class="word-chip chip-sparingly">caffeine</span>
+      <span class="word-chip chip-sparingly">too many ideas</span>
+      <span class="word-chip chip-sparingly">code</span>
+    </div>
+
+    <p class="subsection-title">Never Use</p>
+    <div class="word-cloud">
+      <span class="word-chip chip-never">leverage</span>
+      <span class="word-chip chip-never">utilize</span>
+      <span class="word-chip chip-never">seamless</span>
+      <span class="word-chip chip-never">frictionless</span>
+      <span class="word-chip chip-never">robust</span>
+      <span class="word-chip chip-never">world-class</span>
+      <span class="word-chip chip-never">synergy</span>
+      <span class="word-chip chip-never">ecosystem</span>
+      <span class="word-chip chip-never">monetize</span>
+      <span class="word-chip chip-never">users</span>
+      <span class="word-chip chip-never">stakeholders</span>
+      <span class="word-chip chip-never">disruptive</span>
+      <span class="word-chip chip-never">industry-leading</span>
+    </div>
+
+    <div class="banner banner-info mt2">
+      <div class="banner-content">
+        <div class="banner-title">One rule to remember</div>
+        <div class="banner-body">"Users" → "people" or "builders". "Monetize" → "make money" or "get paid". Treat builders as humans, not metrics.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- COPY PATTERNS -->
+  <section id="copy">
+    <p class="section-label">14 — Voice & Tone</p>
+    <h2 class="section-title">Copy Patterns</h2>
+    <p class="section-desc">Real hints over repeated labels. Placeholders that actually help.</p>
+    <div class="divider"></div>
+
+    <p class="subsection-title" style="margin-top:0;">Placeholder Text</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">✅ Good</label>
+        <input type="text" class="form-input" placeholder="What do people call it?" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">❌ Bad</label>
+        <input type="text" class="form-input" style="border-color:rgba(192,57,43,0.4)" placeholder="Name" />
+      </div>
+    </div>
+
+    <p class="subsection-title">Tone by Context</p>
+    <div style="display:flex;flex-direction:column;gap:0.5rem;">
+      <div class="banner banner-info">
+        <div class="banner-content">
+          <div class="banner-title">Onboarding</div>
+          <div class="banner-body">"Let's get your thing listed. It won't take long." — Warm, guiding.</div>
+        </div>
+      </div>
+      <div class="banner banner-info">
+        <div class="banner-content">
+          <div class="banner-title">Error</div>
+          <div class="banner-body">"Something went wrong on our end. Try again in a sec." — Honest, calm, helpful.</div>
+        </div>
+      </div>
+      <div class="banner banner-success">
+        <div class="banner-content">
+          <div class="banner-title">Success</div>
+          <div class="banner-body">"You're in. Go build." — Genuine, not over-the-top.</div>
+        </div>
+      </div>
+      <div class="banner banner-info">
+        <div class="banner-content">
+          <div class="banner-title">Email subject</div>
+          <div class="banner-body">"Your listing is live ♡" / "Someone found your tool today" — Curious or direct. Never clickbait.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div>SassyMartie Component Styles Guide — Version 1.0, May 2026</div>
+    <div>Built with heart, chaos, and caffeine <span class="heart">♡</span></div>
+  </footer>
+
+</main>
+
+<script>
+  const sections = document.querySelectorAll('section[id], div[id="colors"]');
+  const navLinks = document.querySelectorAll('nav.sidebar a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`nav.sidebar a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

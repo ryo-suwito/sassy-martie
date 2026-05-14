@@ -1,0 +1,6 @@
+-- =============================================================================
+-- SUPERSEDED — no-op
+-- In the new lexicographic migration order, 001–015 run BEFORE the date-stamped
+-- migrations. The old public.tools and public.profiles tables are never created,
+-- so there is nothing to drop here.
+-- =============================================================================
