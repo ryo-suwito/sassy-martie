@@ -58,6 +58,7 @@ describe('Auth Guards', () => {
       vi.mocked(getClaims).mockResolvedValue(mockClaims)
 
       const mockSupabase = {
+        schema: vi.fn().mockReturnThis(),
         from: vi.fn().mockReturnThis(),
         select: vi.fn().mockReturnThis(),
         eq: vi.fn().mockReturnThis(),
@@ -76,6 +77,7 @@ describe('Auth Guards', () => {
       vi.mocked(getClaims).mockResolvedValue(mockClaims)
 
       const mockSupabase = {
+        schema: vi.fn().mockReturnThis(),
         from: vi.fn().mockReturnThis(),
         select: vi.fn().mockReturnThis(),
         eq: vi.fn().mockReturnThis(),
@@ -93,6 +95,7 @@ describe('Auth Guards', () => {
       vi.mocked(getClaims).mockResolvedValue(mockClaims)
 
       const mockSupabase = {
+        schema: vi.fn().mockReturnThis(),
         from: vi.fn().mockReturnThis(),
         select: vi.fn().mockReturnThis(),
         eq: vi.fn().mockReturnThis(),
