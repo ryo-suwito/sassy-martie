@@ -14,7 +14,7 @@ As the agent overseer, the objective was to audit the A0 Schema Foundation deliv
 ### 1. Migration Execution
 - **Command Executed:** `npx supabase db reset`
 - **Status:** **PASSED**
-- **Details:** All 15 migration files (`001_schemas.sql` to `015_seed_config.sql`), along with initial schemas, applied cleanly without any errors. The schema separation, enums, triggers, and functions successfully initialized.
+- **Details:** All 18 migration files (`20240514000001_schemas.sql` to `20240514000018_qa_state_machine.sql`), along with initial schemas, applied cleanly without any errors. The schema separation, enums, triggers, and functions successfully initialized.
 
 ### 2. Type Generation
 - **Command Executed:** `npx supabase gen types typescript --local`
@@ -22,7 +22,7 @@ As the agent overseer, the objective was to audit the A0 Schema Foundation deliv
 - **Details:** The command ran successfully and generated the appropriate database typings for the TypeScript environment, writing directly to `src/utils/supabase/database.types.ts`.
 
 ### 3. Deliverables and RLS Checklist Verification
-- **Migrations Directory:** All 15 required migration files exist and map correctly to the specifications.
+- **Migrations Directory:** All 18 required migration files exist and map correctly to the specifications, including the latest state machine and builder extensions.
 - **Application Utilities:** `browser.ts`, `server.ts`, `middleware.ts`, and `database.types.ts` exist under `src/utils/supabase/`.
 - **Security Rules:**
   - **`audit_log` Rules:** Verified. No `UPDATE` or `DELETE` policies exist. Only `SELECT` is available for backoffice.
