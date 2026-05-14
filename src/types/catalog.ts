@@ -16,10 +16,20 @@ export interface Listing {
   pricing_model: PricingModel
   status: ListingStatus
   qa_status: QAStatus
+  target_audience_description: string | null
   submitted_at: string | null
   published_at: string | null
   created_at: string
   updated_at: string
+}
+
+export interface ListingMedia {
+  id: string
+  listing_id: string
+  url: string
+  type: string
+  display_order: number
+  created_at: string
 }
 
 export interface Utility {
