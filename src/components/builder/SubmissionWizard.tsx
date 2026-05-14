@@ -11,16 +11,35 @@ interface SubmissionWizardProps {
   initialListing?: Listing & { media?: { url: string; type: string }[] }
 }
 
+type ActionState = { 
+  error?: string; 
+  success?: boolean; 
+  id?: string; 
+  fieldErrors?: Record<string, string[]> 
+} | null;
+
 export function SubmissionWizard({ initialListing }: SubmissionWizardProps) {
   const [step, setStep] = useState(1)
   const [listingId, setListingId] = useState<string | undefined>(initialListing?.id)
   const router = useRouter()
 
-  const [saveState, saveAction, isPending] = useActionState(saveDraft, null)
-  const [submitState, submitAction, isSubmitting] = useActionState(submitListing, null)
+  const [saveState, saveAction, isPending] = useActionState(
+    saveDraft as (state: ActionState, payload: FormData) => Promise<ActionState>, 
+    null as ActionState
+  )
+  const [submitState, submitAction, isSubmitting] = useActionState(
+    submitListing as (state: ActionState, payload: FormData) => Promise<ActionState>, 
+    null as ActionState
+  )
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 4))
   const prevStep = () => setStep((s) => Math.max(s - 1, 1))
+
+  const handleSave = async (formData: FormData) => {
+    if (listingId) formData.append('id', listingId)
+    await saveAction(formData)
+    nextStep()
+  }
 
   // Update listingId if save succeeds
   if (saveState?.success && saveState.id && saveState.id !== listingId) {
@@ -39,11 +58,7 @@ export function SubmissionWizard({ initialListing }: SubmissionWizardProps) {
           title="Tool Identity" 
           description="Tell us about your tool. Martie loves details."
         >
-          <form action={async (formData) => {
-            if (listingId) formData.append('id', listingId)
-            await saveAction(formData)
-            nextStep()
-          }} className="space-y-4">
+          <form action={handleSave} className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">Tool Name</label>
               <input name="name" defaultValue={initialListing?.name} required className="w-full border rounded p-2" />
@@ -73,11 +88,7 @@ export function SubmissionWizard({ initialListing }: SubmissionWizardProps) {
           title="Pricing & Audience" 
           description="Who is this for and how much does it cost?"
         >
-          <form action={async (formData) => {
-            if (listingId) formData.append('id', listingId)
-            await saveAction(formData)
-            nextStep()
-          }} className="space-y-4">
+          <form action={handleSave} className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">Pricing Model</label>
               <select name="pricing_model" defaultValue={initialListing?.pricing_model} className="w-full border rounded p-2">
@@ -107,13 +118,7 @@ export function SubmissionWizard({ initialListing }: SubmissionWizardProps) {
           title="Media & Screenshots" 
           description="Show off your tool's best side."
         >
-          <form action={async (formData) => {
-            if (listingId) formData.append('id', listingId)
-            // For now, we'll just handle one URL to keep it simple, 
-            // but in a real app this would be a file upload or multiple inputs.
-            await saveAction(formData)
-            nextStep()
-          }} className="space-y-4">
+          <form action={handleSave} className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">Screenshot URL</label>
               <input name="media.0.url" type="url" defaultValue={initialListing?.media?.[0]?.url} className="w-full border rounded p-2" />

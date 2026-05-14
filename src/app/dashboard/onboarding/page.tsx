@@ -2,7 +2,7 @@ import { getClaims } from '@/lib/auth/getClaims'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import { OnboardingStep } from '@/components/builder/OnboardingStep'
-import { claimUsername } from '@/actions/builder/claim-username'
+import { UsernameForm } from '@/components/builder/UsernameForm'
 import Link from 'next/link'
 
 export default async function OnboardingPage() {
@@ -26,18 +26,7 @@ export default async function OnboardingPage() {
         title="Claim Your Identity" 
         description="Pick a username that builders will recognize. This is your brand."
       >
-        <form action={claimUsername} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">Username</label>
-            <div className="flex items-center gap-2">
-              <span className="text-gray-400">sassymartie.com/</span>
-              <input name="username" required className="flex-1 border rounded p-2" placeholder="your-name" />
-            </div>
-          </div>
-          <button type="submit" className="w-full bg-blue-600 text-white rounded p-2 font-medium">
-            Claim Username
-          </button>
-        </form>
+        <UsernameForm />
       </OnboardingStep>
     )
   }
