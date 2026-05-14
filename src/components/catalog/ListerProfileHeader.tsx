@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListerProfileModel } from '@/types/read-models';
-import { Globe, Twitter } from 'lucide-react';
+import { Globe, Share2 } from 'lucide-react';
 
 interface ListerProfileHeaderProps {
   profile: ListerProfileModel;
@@ -41,7 +41,7 @@ export default function ListerProfileHeader({ profile }: ListerProfileHeaderProp
             )}
             {profile.twitter_handle && (
               <a href={`https://twitter.com/${profile.twitter_handle}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-brand-red transition-colors">
-                <Twitter className="w-4 h-4" /> Twitter
+                <Share2 className="w-4 h-4" /> Twitter
               </a>
             )}
             <div className="flex items-center gap-2 text-brand-charcoal">

@@ -4,12 +4,7 @@ import { notFound } from "next/navigation";
 import { getTool } from "@/utils/tools";
 import Navbar from "@/components/ui/Navbar";
 import { Terminal } from "lucide-react";
-import dynamic from "next/dynamic";
-
-// Map slugs to their client components
-const TOOL_COMPONENTS: Record<string, React.ComponentType> = {
-  "precision-chopper": dynamic(() => import("@/app/tools/precision-chopper/ChopperClient"), { ssr: false }),
-};
+import UtilityClient from "./UtilityClient";
 
 interface UtilityPageProps {
   params: Promise<{ slug: string }>;
@@ -37,9 +32,8 @@ export async function generateMetadata({ params }: UtilityPageProps): Promise<Me
 export default async function UtilityPage({ params }: UtilityPageProps) {
   const { slug } = await params;
   const tool = getTool(slug);
-  const Component = TOOL_COMPONENTS[slug];
 
-  if (!tool || !Component) {
+  if (!tool) {
     notFound();
   }
 
@@ -61,7 +55,7 @@ export default async function UtilityPage({ params }: UtilityPageProps) {
       </div>
 
       <main className="min-h-[600px] flex flex-col">
-        <Component />
+        <UtilityClient slug={slug} />
       </main>
 
       <div className="bg-brand-peach/20 border-t border-brand-red/10 py-12 mt-auto">

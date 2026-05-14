@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
-import { ListingCardModel, ListerProfileModel } from "@/types/read-models";
+import { ListingCardModel, ListerProfileModel, QAStatus } from "@/types/read-models";
 
 export async function getListings(filters?: {
   pricing_model?: string;
