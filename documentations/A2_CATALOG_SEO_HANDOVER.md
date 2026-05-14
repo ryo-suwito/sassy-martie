@@ -47,7 +47,8 @@ Vitest provides a seamless experience in Next.js projects, offering better perfo
 While Next.js 15 features are still evolving, we've implemented listing and portfolio pages with a clear strategy for caching (slug-based keys) as per the **Zero-Leak Strategy**.
 
 ### SEO Implementation
-- **JSON-LD:** `SoftwareApplication` schema is injected into `/[slug]` pages to help search engines understand the tool's utility and price.
+- **JSON-LD:** `SoftwareApplication` schema is injected into `/[identifier]` pages (when rendering a listing) to help search engines understand the tool's utility and price.
+- **Dynamic Routing:** Combined `[slug]` and `[username]` into a single `/[identifier]` route to resolve Next.js ambiguity at the root level. The page prioritizes listing matches over builder profiles.
 - **Dynamic Sitemap:** Prioritizes the Home and Explore pages while ensuring all live listings are discoverable within one hop.
 
 ---
