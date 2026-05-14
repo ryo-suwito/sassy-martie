@@ -1,0 +1,8 @@
+packages:
+  - '.'
+  - '../sassy-martie-worktrees/a0-schema'
+  - '../sassy-martie-worktrees/a1-auth'
+  - '../sassy-martie-worktrees/a2-catalog'
+  - '../sassy-martie-worktrees/a3-builder'
+  - '../sassy-martie-worktrees/a4-backoffice'
+  - '../sassy-martie-worktrees/a5-community'
